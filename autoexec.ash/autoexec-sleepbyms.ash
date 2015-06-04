@@ -79,3 +79,5 @@ t gpio 54 sw out0
 #t pwm 1 enable
 sleep 50
 #t pwm 1 disable
+sleep 3000
+poweroff yes
