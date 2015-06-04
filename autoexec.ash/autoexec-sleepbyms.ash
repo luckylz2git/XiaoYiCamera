@@ -1,4 +1,4 @@
-sleep 1
+﻿sleep 1
 
 #original from https://github.com/funneld/XiaomiYi/blob/master/autoexec.ash/1.0.12-fw/sleepMillisecondsHack/autoexec.ash
 #convert sleep to milliseconds hack
