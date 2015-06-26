@@ -1,0 +1,14 @@
+<X_BROADCOM_COM_BluetoothAdapter>
+  <bt_config>
+    <enable>1</enable>
+    <visible>1</visible>
+    <connectable>1</connectable>
+    <local_name>XiaoYi Bluetooth Device</local_name>
+    <bd_addr>04:E6:76:81:59:44</bd_addr>
+    <class_of_device>00:04:24</class_of_device>
+    <pin_code>0000</pin_code>
+    <pin_len>4</pin_len>
+    <io_capabilities>1</io_capabilities>
+    <root_path>./pictures</root_path>
+  </bt_config>
+</X_BROADCOM_COM_BluetoothAdapter>

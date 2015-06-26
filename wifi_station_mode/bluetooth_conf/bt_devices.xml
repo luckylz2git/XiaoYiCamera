@@ -1,0 +1,36 @@
+<X_BROADCOM_COM_BluetoothAdapter>
+  <bt_devices>
+    <device value = "0">
+      <bd_addr>04:E6:76:AA:F6:93</bd_addr>
+      <device_name></device_name>
+      <class_of_device>00:00:00</class_of_device>
+      <link_key>00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00</link_key>
+      <Link_key_present>0</Link_key_present>
+      <key_type>0</key_type>
+      <trusted_services>0x80100000</trusted_services>
+      <vid>0x00D2</vid>
+      <pid>0x0580</pid>
+      <version>0x0100</version>
+      <features>00:00:00:00:00:00:00:00</features>
+      <lmp_version>0</lmp_version>
+      <ble_addr_type>0</ble_addr_type>
+      <device_type>2</device_type>
+      <inq_result_type>0</inq_result_type>
+      <ble_Link_key_present>1</ble_Link_key_present>
+      <penc_ltk>BB:F2:26:81:09:28:24:A7:37:BE:02:2D:45:B4:C0:13</penc_ltk>
+      <penc_rand>BF:A6:CA:55:4D:1C:08:BB</penc_rand>
+      <penc_ediv>27187</penc_ediv>
+      <penc_sec_level>1</penc_sec_level>
+      <penc_key_size>16</penc_key_size>
+      <prid_irk>00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00</prid_irk>
+      <prid_addr_type>0</prid_addr_type>
+      <prid_static_addr>00:00:00:00:00:00</prid_static_addr>
+      <pcsrk_counter>0</pcsrk_counter>
+      <pcsrk_csrk>00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00</pcsrk_csrk>
+      <pcsrk_sec_level>0</pcsrk_sec_level>
+      <lcsrk_counter>0</lcsrk_counter>
+      <lcsrk_dis>0</lcsrk_dis>
+      <lcsrk_sec_level>0</lcsrk_sec_level>
+    </device>
+  </bt_devices>
+</X_BROADCOM_COM_BluetoothAdapter>
