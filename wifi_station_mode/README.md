@@ -37,3 +37,18 @@ bt_devices.xml
 如何查看安卓手机中已配对蓝牙设备信息
 http://zhidao.baidu.com/link?url=KioQBqX1CukibXnnHNU0lTzkHJloZcMtzBPEttYetDgETXenPF45FbWEUilAd8KzYPv78eIc4axLnTv23uiJYsZx3OidmFcFCvqRnlcCZPK
 /data/misc/bluedroid/bt_config.xml
+
+How to get telnet works:
+No.1 autoexec.ash, no need input user/pass
+sleep 5
+lu_util exec telnetd -l/bin/sh
+
+No2. 
+put an empty file: enable_info_display.script
+> telnet 192.168.42.1
+buildroot login: root
+~ # cd /
+/ # ls
+
+How to mount as read/write
+/ # mount / -o rw,remount
