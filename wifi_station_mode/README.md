@@ -18,7 +18,7 @@ How to get current wifi.conf
 #3 cp wifi.conf /tmp/fuse_d/wifi_new.conf
 #4 Power Off and put the TF card in USB Card Reader
 
-How to get bluetooth conf
+How to get bluetooth configure xml
 #0 Telnet to Yi Cam, IP: 192.168.42.1
 #1 Telnet to Yi Cam, IP: 192.168.42.1 PORT: 23 (For Putty.exe)
 #2 cd /tmp/fuse_a/pref
