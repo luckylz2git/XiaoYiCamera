@@ -7,8 +7,12 @@ writew 0xC05C1006 0x420C
 # enabled telnet
 sleep 4
 lu_util exec telnetd -l/bin/sh
-#auto start video record
-t app key record
 # enabled wifi station mode
-sleep 25
+sleep 14
 lu_util exec '/tmp/fuse_d/wifi/sta.sh'
+#auto start video record
+sleep 1
+t pwm 1 enable
+sleep 1
+t pwm 1 disable
+t app key record
