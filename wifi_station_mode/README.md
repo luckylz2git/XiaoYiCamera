@@ -50,5 +50,5 @@ buildroot login: root
 ~ # cd /
 / # ls
 
-How to mount as read/write
+How to mount as read/write [wrong]
 / # mount / -o rw,remount
