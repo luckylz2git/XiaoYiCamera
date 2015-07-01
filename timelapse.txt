@@ -45,3 +45,9 @@ echo $str >> /tmp/fuse_d/filename.txt
 # read from file
 str=`cat filename.txt`
 echo $str
+
+# read lines from file
+cat file.txt | while read line
+do
+  echo $line
+done
