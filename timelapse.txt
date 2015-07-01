@@ -22,3 +22,22 @@ do
 done
 
 / # mkdir /tmp/fuse_a/LUCKY
+
+# dir exist
+if [ -d "dirname" ]; then
+  echo "dir exist"
+else
+  echo "dir not exist"
+fi
+
+# file exist
+if [ -f "filename" ]; then
+  echo "file exist"
+else
+  echo "file not exist"
+fi
+
+# write to file
+str="write something here"
+echo $str
+echo $str >> /tmp/fuse_d/filename.txt
