@@ -41,3 +41,7 @@ fi
 str="write something here"
 echo $str
 echo $str >> /tmp/fuse_d/filename.txt
+
+# read from file
+str=`cat filename.txt`
+echo $str
