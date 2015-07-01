@@ -17,6 +17,8 @@ while true
 do
   t app key shutter
   sleep 10
-  lu_util exec '/tmp/fuse_a/timelapse/timelapse.sh'
+  lu_util exec '/tmp/fuse_a/LUCKY/timelapse.sh'
   sleep 5
 done
+
+/ # mkdir /tmp/fuse_a/LUCKY
