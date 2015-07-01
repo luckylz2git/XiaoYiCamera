@@ -1,0 +1,22 @@
+# enabled telnet
+sleep 5
+lu_util exec telnetd -l/bin/sh
+
+# move file script
+# mv /tmp/fuse_d/DCIM/*MEDIA/* /tmp/fuse_d/DCIM/timelapse/
+
+# list file count script
+/tmp/fuse_d/dcim/timelapse # ls -l | grep "^-" | wc -l
+/tmp/fuse_d/dcim/timelapse # ls -l | grep "RAW" | wc -l
+/tmp/fuse_d/dcim/timelapse # ls -l | grep "jpg" | wc -l
+
+sleep 5
+t app test debug_dump 14
+sleep 1
+while true
+do
+  t app key shutter
+  sleep 10
+  lu_util exec '/tmp/fuse_a/timelapse/timelapse.sh'
+  sleep 5
+done
