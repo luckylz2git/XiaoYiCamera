@@ -10,6 +10,6 @@ if [ $new -ge $old ]; then
   rm /tmp/fuse_d/timelapse_count
   mv /tmp/fuse_d/autoexec.ash /tmp/fuse_d/autoexec-timelapse.ash
   mv /tmp/fuse_d/autoexec-poweroff.ash /tmp/fuse_d/autoexec.ash
-  sleep 5
+  sleep 1
   reboot
 fi
