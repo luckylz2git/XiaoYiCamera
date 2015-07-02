@@ -86,4 +86,5 @@ done
 # file list
 # beep_power_off.ash
 # loop_control.sh
-#                                                                                                                                                                   timelapse.ash
+
+https://github.com/funneld/XiaomiYi/blob/master/autoexec.ash/1.0.12-fw/sleepMillisecondsHack/autoexec.ash                                       timelapse.ash
