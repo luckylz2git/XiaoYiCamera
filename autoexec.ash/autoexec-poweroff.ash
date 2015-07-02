@@ -1,5 +1,5 @@
 sleep 5
-t pwm 1 set_level 30
+t pwm 1 set_level 120
 # No.1
 sleep 1
 t pwm 1 enable

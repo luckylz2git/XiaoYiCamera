@@ -6,6 +6,6 @@ if [ $new -ge $old ]; then
   sleep 1
   mv /tmp/fuse_d/autoexec.ash /tmp/fuse_d/autoexec-timelapse.ash
   mv /tmp/fuse_d/autoexec-poweroff.ash /tmp/fuse_d/autoexec.ash
-  sleep 1
+  sleep 9
   reboot
 fi
