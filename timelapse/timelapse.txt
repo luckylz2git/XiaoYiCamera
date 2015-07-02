@@ -80,3 +80,10 @@ done
 -ge 参数1是否大于等于参数2
 -f  检查某文件是否存在（例如，if [ -f "filename" ]）
 -d  检查目录是否存在
+
+# timelapse init dir
+# /tmp/fuse_d/timelapse_init
+# file list
+# beep_power_off.ash
+# loop_control.sh
+#                                                                                                                                                                   timelapse.ash
