@@ -6,5 +6,5 @@ do
   lu_util exec '/tmp/fuse_d/timelapseloop.sh 10'
   sleep 1
   t app key shutter
-  sleep 4
+  sleep 8
 done
