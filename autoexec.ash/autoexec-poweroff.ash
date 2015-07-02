@@ -1,3 +1,4 @@
+# beep 5 times then power off
 sleep 5
 t pwm 1 set_level 120
 # No.1
