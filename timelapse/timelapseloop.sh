@@ -1,7 +1,11 @@
 #!/bin/sh
-mv /tmp/fuse_d/DCIM/*MEDIA/* /tmp/fuse_d/DCIM/LUCKY/
-sleep 1
-lcount = `ls -l /tmp/fuse_d/DCIM/LUCKY/ | grep "RAW" | wc -l`
-if [ $lcount -gt 10 ]; then
-  sleep 3600
+#mv /tmp/fuse_d/DCIM/*MEDIA/* /tmp/fuse_d/DCIM/LUCKY/
+old=`cat /tmp/fuse_d/timelapse.conf`
+old=$(($old + 10))
+new=`ls -lR /tmp/fuse_d/DCIM/ | grep "RAW" | wc -l`
+if [ $new -ge $old ]; then
+  sleep 1
+  mv /tmp/fuse_d/autoexec.ash /tmp/fuse_d/autoexec-timelapse.ash
+  sleep 10
+  reboot
 fi
