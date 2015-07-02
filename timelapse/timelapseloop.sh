@@ -1,6 +1,6 @@
 #!/bin/sh
 old=`cat /tmp/fuse_d/timelapse.conf`
-old=$(($old + 10))
+old=$(($old + $1))
 new=`ls -lR /tmp/fuse_d/DCIM/ | grep "RAW" | wc -l`
 if [ $new -ge $old ]; then
   sleep 1
