@@ -27,7 +27,9 @@ t pwm 1 enable
 sleep 1
 t pwm 1 disable
 sleep 1
-# rename back to autoexec-poweroff.ash
+# rename back to autoexec-reboot.ash
 lu_util exec 'mv /tmp/fuse_d/autoexec.ash /tmp/fuse_d/autoexec-reboot.ash'
 sleep 1
-lu_util exec 'reboot'
+echo `ls /tmp/fuse_d/` > /tmp/fuse_d/beforereboot.txt
+sleep 1
+reboot yes

@@ -1,0 +1,9 @@
+# fuse_a -> a:/
+# fuse_d -> d:/
+# d:/ or d:\ the same in linux
+
+# Test Success Commands
+# delete /tmp/fuse_d/rm.txt
+rm d:/rm.txt
+# rename /tmp/fuse_d/mv.txt to /tmp/fuse_d/vm.txt
+mv d:\mv.txt d:\vm.txt
