@@ -7,3 +7,13 @@
 rm d:/rm.txt
 # rename /tmp/fuse_d/mv.txt to /tmp/fuse_d/vm.txt
 mv d:\mv.txt d:\vm.txt
+
+# rename /tmp/fuse_d/autoexec.ash to /tmp/fuse_d/autoexec-1.ash
+# Failed Command, Maybe autoexec.ash is running and locked
+mv d:/autoexec.ash d:/autoexec-1.ash
+
+# power off Yi Cam
+poweroff yes
+
+# reboot Yi Cam
+reboot yes
