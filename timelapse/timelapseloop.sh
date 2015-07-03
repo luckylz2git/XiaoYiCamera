@@ -9,7 +9,7 @@ if [ $new -ge $old ]; then
   sleep 1
   rm /tmp/fuse_d/timelapse_count
   mv /tmp/fuse_d/autoexec.ash /tmp/fuse_d/autoexec-timelapse.ash
-  mv /tmp/fuse_d/autoexec-poweroff.ash /tmp/fuse_d/autoexec.ash
+  mv /tmp/fuse_d/autoexec-reboot.ash /tmp/fuse_d/autoexec.ash
   sleep 1
   reboot
 fi
