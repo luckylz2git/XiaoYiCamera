@@ -4,7 +4,7 @@ if [ ! -f /tmp/fuse_d/timelapse_count ]; then
 fi
 old=`cat /tmp/fuse_d/timelapse_count`
 old=$(($old + $1))
-new=`ls -lR /tmp/fuse_d/DCIM/ | grep "RAW" | wc -l`
+new=`ls -lR /tmp/fuse_d/DCIM/ | grep ".RAW" | wc -l`
 if [ $new -ge $old ]; then
   sleep 1
   rm /tmp/fuse_d/timelapse_count
