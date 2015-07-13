@@ -3,6 +3,7 @@ Put a few autoexec.ash files into Yi Cam, and switch modes using button combinat
 
 No.1 - Video 1296p Mode
 Power on
+Turn on wifi
 Shoot 3 new pictures
 Turn off wifi
 Wait for Yi Cam auto reboot
@@ -11,6 +12,7 @@ Enter 1296p video mode
 
 No.1 - 设置1296p视频模式
 开机
+开启wifi
 连续拍3张新照片
 关闭wifi
 等待相机自动重启

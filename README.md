@@ -1,6 +1,10 @@
 # XiaoYiCamera
 XiaoYi Sport Camera related commands and scripts
 
+# Firmware Update Links
+http://www.xiaoyi.com/home/guide.html
+http://www.xiaoyi.com/home/upgrade.html
+
 # Usefully Github Address
 
 # funneld: many ash scripts
