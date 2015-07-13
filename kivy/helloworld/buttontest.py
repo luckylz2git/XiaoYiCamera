@@ -7,13 +7,13 @@ class HelloWorldApp(App):
   def build(self):
     par = Widget()
     btn1 = Button(text='Hello world 1')
-    btn1.bind(on_press=callback)
+    btn1.bind(on_press=self.callback)
     btn2 = Button(text='Hello world 2')
-    btn2.bind(on_press=callback)
+    btn2.bind(on_press=self.callback)
     par.add_widget(btn1)
     par.add_widget(btn2)
     return par
-  def callback(instance):
+  def callback(self, instance):
     print('The button <%s> is being pressed' % instance.text)		
 		
 HelloWorldApp().run()
