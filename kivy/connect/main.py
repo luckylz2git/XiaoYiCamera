@@ -9,9 +9,10 @@ from kivy.app import App
 # import base64, functools, hashlib, json, os, platform, re, select, socket, subprocess, sys, tempfile, threading, time, tkFileDialog, tkMessageBox, urllib2, webbrowser, zlib
 import json, socket, threading, time, select
 
-__version__='1.1.1'
+__version__='0.0.1'
 
 class Ponerine(BoxLayout):
+  version = StringProperty(__version__)
   jread = 0
   jloop = 0
   def CamConnect(self):
@@ -174,13 +175,7 @@ class Ponerine(BoxLayout):
     return self.JsonData[msgid]
     
 class PonerineApp(App):
-  ver = __version__
-  version = StringProperty(ver)
-  connected = BooleanProperty(False)
   def build(self):
-    print "Version Number: ", self.version
-    self.connected = True
-    print "Connect Status: ", self.connected
     return Ponerine()
   
   def on_pause(self):
