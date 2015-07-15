@@ -36,6 +36,7 @@ class Ponerine(BoxLayout):
       self.token = ""
       while 1:
         if self.connected:
+          print "Connected Json Data: ", self.JsonData
           if self.token == "":
             break
           #self.UpdateUsage()

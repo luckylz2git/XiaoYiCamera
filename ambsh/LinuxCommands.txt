@@ -8,3 +8,7 @@ ls -tr
 #时间从新到旧排序
 ls -lt
 ls -t
+#列出前10个txt文件
+ls -l *.txt | head -10
+#sort -u按照unique排序，不重复
+ls -l *.txt | sort -u | head -10
