@@ -1,0 +1,10 @@
+ls *.txt --full-time
+-rw-rw-r-- 1 kivy kivy 492 2015-07-10 13:08:47.074674900 +0800 ABCD.txt
+-rw-rw-r-- 1 kivy kivy 861 2015-04-27 06:55:11.601619145 +0800 1234.txt
+
+#时间从旧到新排序
+ls -ltr
+ls -tr
+#时间从新到旧排序
+ls -lt
+ls -t
