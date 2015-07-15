@@ -13,14 +13,19 @@ __version__='0.0.1'
 
 class Ponerine(BoxLayout):
   version = StringProperty(__version__)
-  jread = 0
-  jloop = 0
+  JsonData = {}
+  token = NumericProperty()
+  Jsoncounter = NumericProperty(0)
+  Jsonflip = NumericProperty(0)
+  connected = BooleanProperty()
+  camconfig = {}
   def CamConnect(self):
-    try:
+    #try:
       self.camaddr = "192.168.42.1"
       self.camport = 7878
       self.camdataport = 8787
       self.camwebport = 80
+      self.token = 0
       print self.camaddr, self.camport, self.camdataport, self.camwebport
       socket.setdefaulttimeout(5)
       self.srv = socket.socket(socket.AF_INET, socket.SOCK_STREAM) #create socket
@@ -30,17 +35,17 @@ class Ponerine(BoxLayout):
       self.thread_read = threading.Thread(target=self.JsonReader)
       self.thread_read.setDaemon(True)
       self.thread_read.setName('JsonReader')
-      print "thread start"
       self.thread_read.start()
       waiter = 0
-      self.token = ""
+      #self.token = ""
       while 1:
         if self.connected:
-          print "Connected Json Data: ", self.JsonData
-          if self.token == "":
+          print "self.token before empty", self.token
+          if self.token == 0:
+            print "self.token empty"
             break
-          #self.UpdateUsage()
-          #self.UpdateBattery()
+          self.UpdateUsage()
+          self.UpdateBattery()
           self.ReadConfig()
           self.SDOK = True
           if self.camconfig["sd_card_status"] == "insert" and self.totalspace > 0:
@@ -63,25 +68,17 @@ class Ponerine(BoxLayout):
           else:
             raise Exception('Connection', 'failed') #throw an exception
 
-    except Exception as e:
-      self.connected = False
-      print "Connect Error:", "Cannot connect to the address specified"
+    #except Exception as e:
+      #self.connected = False
+      #print "Connect Error:", "Cannot connect to the address specified"
       #self.srv.close()
 
   def JsonReader(self):
-    self.jread += 1
-    print "JsonReader: ", self.jread
-    self.JsonData = ""
+    self.JsonData = {}
     self.Jsoncounter = 0
     self.Jsonflip = 0
     initcounter = 0
-    print "start to send no.1"
-    sendjson = {"msg_id":257,"token":0}
     self.srv.send('{"msg_id":257,"token":0}') #auth to the camera
-    #self.srv.send(sendjson) #auth to the camera
-    #recdata = self.srv.recv(1024)
-    #print "socket received: ", recdata, "length:", len(recdata)
-    #self.connected = True
     while initcounter < 300:
       self.JsonLoop()
       initcounter += 1
@@ -90,16 +87,12 @@ class Ponerine(BoxLayout):
     if len(self.JsonData) > 0:
       self.srv.setblocking(0)
       self.connected = True
-      print "Yi Cam Connected"
       while self.connected:
         self.JsonLoop()
 
   def JsonLoop(self):
-    self.jloop += 1
-    print "JsonLoop: ", self.jloop
-    try:
+    #try:
       ready = select.select([self.srv], [], [])
-      print "ready[0]:", ready[0]
       if ready[0]:
         byte = self.srv.recv(1)
         if byte == "{":
@@ -110,13 +103,17 @@ class Ponerine(BoxLayout):
         self.JsonData += byte
         
         if self.Jsonflip == 1 and self.Jsoncounter == 0:
-          try:
+     #     try:
             data_dec = json.loads(self.JsonData)
-            self.JsonData = ""
+            print "one piece json:", data_dec
+            self.JsonData = {}
             self.Jsonflip = 0
             if "msg_id" in data_dec.keys():
+              print "msg_id:", data_dec["msg_id"]
               if data_dec["msg_id"] == 257:
+                print "param:", data_dec["param"]
                 self.token = data_dec["param"]
+                print "Loop token:", self.token
               elif data_dec["msg_id"] == 7:
                 if "type" in data_dec.keys() and "param" in data_dec.keys():
                   if data_dec["type"] == "battery":
@@ -146,10 +143,10 @@ class Ponerine(BoxLayout):
               self.JsonData[data_dec["msg_id"]] = data_dec
             else:
               raise Exception('Unknown','data')
-          except Exception as e:
-            print data, e
-    except Exception:
-      self.connected = False
+      #    except Exception as e:
+       #     print data, e
+    #except Exception:
+     # self.connected = False
       
   def ReadConfig(self):
     tosend = '{"msg_id":3,"token":%s}' %self.token 
