@@ -58,3 +58,8 @@ Rename the file in the tf card, uninstall.ash to autoexec.ash, then power on.
 Wait for a 2-seconds long beep, means uninstall success. Yi Cam will auto power off.
 
 听到2秒的蜂鸣音，说明卸载成功。小蚁相机会自动关机。
+
+#捐赠:
+欢迎关注我的新浪微博：@lucky_lz微博
+
+如果你喜欢我的程序，请使用支付宝给我提供捐赠！支付宝账号：lucky_lz@21cn.com
