@@ -12,3 +12,9 @@ ls -t
 ls -l *.txt | head -10
 #sort -u按照unique排序，不重复
 ls -l *.txt | sort -u | head -10
+
+str="123ABC"
+echo ${str:0:3}
+123
+echo ${str:3:3}
+ABC

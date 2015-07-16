@@ -25,9 +25,12 @@ sleep 1
 t pwm 1 enable
 sleep 1
 t pwm 1 disable
+sleep 29
+lu_util exec 'echo "Advanced" > /tmp/fuse_a/custom/mode.inf'
 sleep 1
-while true
-do
-  lu_util exec '/tmp/fuse_a/custom/mode.sh'
-  sleep 9
-done
+lu_util exec '/tmp/fuse_a/custom/mode.sh'
+#while true
+#do
+#  lu_util exec '/tmp/fuse_a/custom/mode.sh'
+#  sleep 9
+#done
