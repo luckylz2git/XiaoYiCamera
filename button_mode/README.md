@@ -23,13 +23,19 @@ Wait about 10-seconds, Yi Cam will auto reboot and switch to another mode.
 等待大约10秒钟，小蚁运动相机会自动重启，切换至另一个模式。
 
 #Mode Status(模式状态):
+Normal Mode(普通模式):
+If Yi Cam power on without beep, it is Normal Mode.
+如果开机时，相机没有蜂鸣，表示相机进入普通模式。
+
 Advanced Mode(高级模式):
 If Yi Cam power on and beep 1-second for 3 times, it is Advanced Mode.
 如果开机时，相机蜂鸣3次，每次长度1秒，表示相机进入高级模式。
 
-Normal Mode(普通模式):
-If Yi Cam power on without beep, it is Normal Mode.
-如果开机时，相机没有蜂鸣，表示相机进入普通模式。
+Now, the Advanced Mode is 1296P 30fps @ 35Mbps video mode and RAW+jpg photo mode.
+目前高级模式的设定为：1296P 30fps @ 35Mbps的视频模式，和RAW+jpg的照片模式。
+
+More Advanced Mode setting will be released soon.
+后面会发布更多的高级模式的设定。
 
 #Uninstallation(卸载):
 Rename the file in the tf card, uninstall.ash to autoexec.ash, then power on.
