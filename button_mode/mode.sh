@@ -5,9 +5,8 @@ HOST="192.168.42.1"
 MODE=/tmp/fuse_a/lucky/mode.inf
 LOGS=/tmp/fuse_a/lucky/mode.log
 
-# Get Ping Result
+# Get WiFi Status
 WIFI_ON=$(ping -W 1 -c 1 $HOST | grep "received")
-
 # First time WiFi ON, record all JPG files count to LOGS
 # First time WiFi OFF, LOGS exist check all JPG files again
 if [ -n "${WIFI_ON}" ]; then
@@ -40,4 +39,3 @@ else
     fi
   fi
 fi
-

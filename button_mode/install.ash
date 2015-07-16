@@ -15,10 +15,10 @@ sleep 1
 lu_util exec 'mv -f /tmp/fuse_d/normal.ash /tmp/fuse_d/autoexec.ash'
 sleep 1
 #t pwm 1 set_level 120
-t pwm 1 set_level 1
+t pwm 1 set_level 10
 sleep 1
 t pwm 1 enable
-sleep 3
+sleep 2
 t pwm 1 disable
 sleep 1
 reboot yes

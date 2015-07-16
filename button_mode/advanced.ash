@@ -12,7 +12,7 @@ sleep 1
 t app test debug_dump 14
 sleep 1
 #t pwm 1 set_level 120
-t pwm 1 set_level 1
+t pwm 1 set_level 10
 sleep 1
 t pwm 1 enable
 sleep 1
@@ -29,5 +29,5 @@ sleep 1
 while true
 do
   lu_util exec '/tmp/fuse_a/lucky/mode.sh'
-  sleep 10
+  sleep 9
 done
