@@ -1,6 +1,6 @@
 #install script
 sleep 3
-lu_util exec 'rm -R /tmp/fuse_a/lucky'
+lu_util exec 'rm -R /tmp/fuse_a/custom'
 sleep 1
 lu_util exec 'rm /tmp/fuse_d/autoexec.ash'
 #enabled telnet
