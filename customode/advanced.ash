@@ -11,8 +11,7 @@ sleep 1
 # photo RAW+jpg
 t app test debug_dump 14
 sleep 1
-#t pwm 1 set_level 120
-t pwm 1 set_level 10
+t pwm 1 set_level 120
 sleep 1
 t pwm 1 enable
 sleep 1
@@ -25,12 +24,9 @@ sleep 1
 t pwm 1 enable
 sleep 1
 t pwm 1 disable
-sleep 29
-lu_util exec 'echo "Advanced" > /tmp/fuse_a/custom/mode.inf'
 sleep 1
-lu_util exec '/tmp/fuse_a/custom/mode.sh'
-#while true
-#do
-#  lu_util exec '/tmp/fuse_a/custom/mode.sh'
-#  sleep 9
-#done
+while true
+do
+  lu_util exec '/tmp/fuse_a/custom/mode.sh'
+  sleep 9
+done

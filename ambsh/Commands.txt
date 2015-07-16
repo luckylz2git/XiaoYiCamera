@@ -29,3 +29,10 @@ lu_util exec 'mv /tmp/fuse_d/autoexec.ash /tmp/fuse_d/autoexec-1.ash'
 telnet login
 buildroot login: root
 ~ #
+
+GPIO Status Value:
+# cat /proc/ambarella/gpio
+          [X]
+00000110000101110000000000000000000010011001100000000010000000001000100000010000000000000000000000000000000000000010001000000000
+012345678901
+WIFI ON/OFF: GPIO 11
