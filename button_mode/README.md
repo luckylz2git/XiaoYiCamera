@@ -20,7 +20,9 @@ No.1 - 设置1296p视频模式
 进入1296p模式
 
 Filelist:
-autoexec-normal.ash
-autoexec-normal-with-beep.ash
-autoexec-1296p.ash
-autoexec-1296p-with-beep.ash
+
+install.ash
+uninstall.ash
+mode.sh
+advanced.ash
+normal.ash
