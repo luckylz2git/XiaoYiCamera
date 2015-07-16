@@ -11,7 +11,8 @@ sleep 1
 # RAW+jpg
 t app test debug_dump 14
 sleep 1
-t pwm 1 set_level 120
+#t pwm 1 set_level 120
+t pwm 1 set_level 1
 sleep 1
 t pwm 1 enable
 sleep 1

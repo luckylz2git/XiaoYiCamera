@@ -2,15 +2,15 @@
 
 # Default XiaoYi IP Address
 HOST="192.168.42.1"
-MODE="/tmp/fuse_a/lucky/mode.inf"
-LOGS="/tmp/fuse_a/lucky/mode.log"
+MODE=/tmp/fuse_a/lucky/mode.inf
+LOGS=/tmp/fuse_a/lucky/mode.log
 
 # Get Ping Result
 WIFI_ON=$(ping -W 1 -c 1 $HOST | grep "received")
 
 # First time WiFi ON, record all JPG files count to LOGS
 # First time WiFi OFF, LOGS exist check all JPG files again
-if [ -n "${WIFI_ON}"]; then
+if [ -n "${WIFI_ON}" ]; then
   if [ ! -f $LOGS ]; then
     echo `ls -lR /tmp/fuse_d/DCIM/ | grep "YDXJ" | wc -l` > $LOGS
   fi
@@ -24,7 +24,7 @@ else
       JPG=`echo "${TOP}" | grep ".jpg" | wc -l`
       if [ $JPG -ge 3 ]; then
         MP4=`echo "${TOP}" | grep "YDXJ" | head -3 | grep ".mp4" | wc -l`
-        if [ $MP4 -eq 0]; then
+        if [ $MP4 -eq 0 ]; then
           STATUS=`cat $MODE`
           if [ "${STATUS}" == "Normal" ]; then
             echo "Advanced" > $MODE
@@ -40,3 +40,4 @@ else
     fi
   fi
 fi
+

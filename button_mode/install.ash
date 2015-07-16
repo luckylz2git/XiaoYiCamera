@@ -10,18 +10,11 @@ lu_util exec 'cp /tmp/fuse_d/normal.ash /tmp/fuse_a/lucky/normal.ash'
 sleep 1
 lu_util exec 'mv /tmp/fuse_d/normal.ash /tmp/fuse_d/autoexec.ash'
 sleep 1
-t pwm 1 set_level 120
+#t pwm 1 set_level 120
+t pwm 1 set_level 1
 sleep 1
 t pwm 1 enable
-sleep 1
-t pwm 1 disable
-sleep 1
-t pwm 1 enable
-sleep 1
-t pwm 1 disable
-sleep 1
-t pwm 1 enable
-sleep 1
+sleep 3
 t pwm 1 disable
 sleep 1
 reboot yes
