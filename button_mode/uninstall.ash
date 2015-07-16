@@ -13,4 +13,4 @@ t pwm 1 enable
 sleep 2
 t pwm 1 disable
 sleep 1
-reboot yes
+poweroff yes
