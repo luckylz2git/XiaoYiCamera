@@ -3,7 +3,7 @@ Put some scripts into Yi Cam, and switch modes using button combinations.
 
 将一组脚本放置在小蚁运动相机里面，使用一些组合按键进行模式切换。
 
-Filelist(文件列表):
+#Filelist(文件列表):
   install.ash
 uninstall.ash
      mode.sh
