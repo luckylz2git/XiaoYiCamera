@@ -2,13 +2,13 @@
 sleep 3
 lu_util exec 'rm /tmp/fuse_a/lucky/mode.log'
 sleep 1
-# 1296p
+# video resolution 1296p
 writeb 0xC06CE446 0x02
 sleep 1
-# 35Mbps
+# bitrate 35Mbps
 writew 0xC05C1006 0x420C
 sleep 1
-# RAW+jpg
+# photo RAW+jpg
 t app test debug_dump 14
 sleep 1
 #t pwm 1 set_level 120
