@@ -1,6 +1,7 @@
 #advanced mode
 sleep 3
 lu_util exec 'rm /tmp/fuse_a/custom/mode.log'
+lu_util exec 'echo "Advanced" > /tmp/fuse_a/custom/mode.inf'
 sleep 1
 # video resolution 1296p
 writeb 0xC06CE446 0x02
