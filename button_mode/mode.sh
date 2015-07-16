@@ -28,10 +28,10 @@ else
           STATUS=`cat $MODE`
           if [ "${STATUS}" == "Normal" ]; then
             echo "Advanced" > $MODE
-            mv /tmp/fuse_a/lucky/advanced.ash /tmp/fuse_d/autoexec.ash
+            cp -f /tmp/fuse_a/lucky/advanced.ash /tmp/fuse_d/autoexec.ash
           else
             echo "Normal" > $MODE
-            mv /tmp/fuse_a/lucky/normal.ash /tmp/fuse_d/autoexec.ash
+            cp -f /tmp/fuse_a/lucky/normal.ash /tmp/fuse_d/autoexec.ash
           fi
           sleep 1
           reboot
