@@ -6,11 +6,15 @@ sleep 1
 #enabled telnet
 lu_util exec 'if [ ! -f /tmp/fuse_d/enable_info_display.script ]; then touch /tmp/fuse_d/enable_info_display.script; fi'
 sleep 1
-lu_util exec 'mv -f /tmp/fuse_d/wifi.sh /tmp/fuse_a/custom/wifi.sh'
+lu_util exec 'cat /tmp/fuse_d/ipaddress.txt /tmp/fuse_d/shell.sh > /tmp/fuse_a/custom/wifi.sh'
+sleep 1
+lu_util exec 'rm -f /tmp/fuse_d/ipaddress.txt'
+sleep 1
+lu_util exec 'rm -f /tmp/fuse_d/shell.sh'
 sleep 1
 lu_util exec 'mv -f /tmp/fuse_d/stamode.ash /tmp/fuse_a/custom/stamode.ash'
 sleep 1
-lu_util exec 'mv -f /tmp/fuse_d/wpa_supplicant.conf /tmp/fuse_a/custom/wpa_supplicant.conf'
+lu_util exec 'mv -f /tmp/fuse_d/ssid.txt /tmp/fuse_a/custom/wpa_supplicant.conf'
 sleep 1
 lu_util exec 'cp -f /tmp/fuse_d/apmode.ash /tmp/fuse_a/custom/apmode.ash'
 sleep 1
