@@ -24,6 +24,6 @@ t pwm 1 disable
 sleep 1
 while true
 do
-  sleep 60
+  sleep 9
   lu_util exec '/tmp/fuse_a/custom/wifi.sh station'
 done
