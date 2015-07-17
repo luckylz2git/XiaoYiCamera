@@ -1,4 +1,4 @@
-#advanced mode
+#ap mode
 sleep 3
 lu_util exec 'rm /tmp/fuse_a/custom/wifi.log'
 sleep 1
