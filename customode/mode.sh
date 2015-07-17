@@ -6,6 +6,7 @@ MODE=/tmp/fuse_a/custom/mode.inf
 LOGS=/tmp/fuse_a/custom/mode.log
 
 #GPIO=`cat /proc/ambarella/gpio`
+#GPIO: General Purpose Input Output
 #WIFI=${GPIO:11:1}
 # Get WiFi Status
 WIFI=$(ping -W 1 -c 1 $HOST | grep "received")
