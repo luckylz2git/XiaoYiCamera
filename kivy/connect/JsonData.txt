@@ -1,0 +1,17 @@
+XiaoYi Sports Camera Json Format Remarks
+
+No.1 Hand shaking, get the token number:
+-> {"msg_id":257,"token":0}
+<- {"rval": 0, "msg_id": 257, "param": 1}
+Saved Json:
+{"257": {"rval": 0, "msg_id": 257, "param": 1}}
+Token=param, starts from 1
+Everytime shakehandle, increase 1.
+
+No.2 Error Message: Token error, need new token
+{"rval": -4, "msg_id": 0}
+
+
+msg_id:3, config
+msg_id:5, memory card
+msg_id:7, 
