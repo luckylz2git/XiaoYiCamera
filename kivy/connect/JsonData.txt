@@ -16,9 +16,6 @@ msg_id:3, config
 msg_id:5, memory card
 msg_id:7, 
 
-{'rval': 0, 'msg_id': 3, 'param': 
-[
-recv 
 {
   "msg_id": 3, 
   "param": [
