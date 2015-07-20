@@ -1,0 +1,7 @@
+#!/bin/sh
+
+# Please Set Gateway and IP Address
+GATE="192.168.1.1"
+# Fixed IP or DHCP
+IPAD="192.168.1.123"
+# IPAD="DHCP"
