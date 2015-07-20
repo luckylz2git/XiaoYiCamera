@@ -1,17 +1,20 @@
-#Button Combination Switch WiFi Mode
-#组合按键切换WiFi模式
+# Button Combination Switch WiFi Mode
+# 组合按键切换WiFi模式
 Put some scripts into Yi Cam, and switch modes using button combinations.
 
 将一组脚本放置在小蚁运动相机里面，使用组合按键进行WiFi模式切换。
 
-#Source File List(源文件列表):
-  install.ash
-uninstall.ash
-     wifi.sh
-  stamode.ash
-   apmode.ash
+## Source File List(源文件列表):
+            install.ash
+install_no_password.ash
+          uninstall.ash
+             apmode.ash
+            stamode.ash
+          ipaddress.txt
+               ssid.txt
+   ssid_no_password.txt
 
-#Installation(安装):
+## Installation(安装):
 Copy above files into root of tf card, rename install.ash to autoexec.ash, insert tf card to Yi Cam, then power on.
 
 将上述文件复制到tf卡根目录，将install.ash重命名为autoexec.ash，把tf卡插入小蚁运动相机，然后开机。
@@ -20,7 +23,7 @@ Wait for a 2-seconds long beep, means install success. Yi Cam will auto reboot a
 
 听到2秒的蜂鸣音，说明安装成功。小蚁相机会自动重启，进入普通模式。
 
-#Mode Description(模式说明):
+## Mode Description(模式说明):
 Normal AP Mode(普通AP模式):
 
 This is default mode by Yi Cam, it works as a router. Default IP Address: 192.168.42.1
@@ -33,7 +36,7 @@ This is an advanced mode, Yi Cam works as a station, need to access your existin
 
 只是一个高级模式，相机作为一个客户端，必须接入一个可用的无线路由器。
 
-#Mode Switch(模式转换):
+## Mode Switch(模式转换):
 From Normal AP Mode switch to WiFi Station Mode:
 
 从普通AP模式切换至WiFi站点模式：
@@ -58,7 +61,7 @@ Wait about 10-seconds, Yi Cam will auto reboot and switch to Normal AP Mode.
 
 等待大约10秒钟，小蚁运动相机会自动重启，切换至普通AP模式。
 
-#Mode Status(模式状态):
+## Mode Status(模式状态):
 Normal AP Mode(普通AP模式):
 
 If Yi Cam power on without beep, it is Normal AP Mode. 
@@ -79,7 +82,7 @@ More Advanced Mode setting will be released soon.
 
 后面会发布更多的高级模式的设定。
 
-#Uninstallation(卸载):
+## Uninstallation(卸载):
 Rename the file in the tf card, uninstall.ash to autoexec.ash, then power on.
 
 将tf卡内的uninstall.ash重命名为autoexec.ash，然后开机。
@@ -88,7 +91,7 @@ Wait for a 2-seconds long beep, means uninstall success. Yi Cam will auto power 
 
 听到2秒的蜂鸣音，说明卸载成功。小蚁相机会自动关机。
 
-#捐赠:
+# 捐赠:
 想了解更多小蚁运动相机脚本程序的应用方法，请关注我的新浪微博：@lucky_lz微博
 
 如果你喜欢我的程序，欢迎使用支付宝给我提供捐赠！支付宝账号：lucky_lz@21cn.com
