@@ -15,3 +15,169 @@ No.2 Error Message: Token error, need new token
 msg_id:3, config
 msg_id:5, memory card
 msg_id:7, 
+
+{'rval': 0, 'msg_id': 3, 'param': 
+[
+recv 
+{
+  "msg_id": 3, 
+  "param": [
+    {
+      "camera_clock": "2015-07-20 23:10:46"
+    }, 
+    {
+      "video_standard": "NTSC"
+    }, 
+    {
+      "app_status": "idle"
+    }, 
+    {
+      "video_resolution": "2304x1296 30P 16:9"
+    }, 
+    {
+      "video_stamp": "off"
+    }, 
+    {
+      "video_quality": "S.Fine"
+    }, 
+    {
+      "timelapse_video": "0.5"
+    }, 
+    {
+      "capture_mode": "precise quality"
+    }, 
+    {
+      "photo_size": "16M (4608x3456 4:3)"
+    }, 
+    {
+      "photo_stamp": "off"
+    }, 
+    {
+      "photo_quality": "S.Fine"
+    }, 
+    {
+      "timelapse_photo": "5"
+    }, 
+    {
+      "preview_status": "on"
+    }, 
+    {
+      "buzzer_volume": "high"
+    }, 
+    {
+      "buzzer_ring": "off"
+    }, 
+    {
+      "capture_default_mode": "precise quality"
+    }, 
+    {
+      "precise_cont_time": "5.0 sec"
+    }, 
+    {
+      "burst_capture_number": "3 p / s"
+    }, 
+    {
+      "wifi_ssid": "XiaoYiCamera"
+    }, 
+    {
+      "wifi_password": "1234567890"
+    }, 
+    {
+      "led_mode": "all enable"
+    }, 
+    {
+      "meter_mode": "spot"
+    }, 
+    {
+      "sd_card_status": "insert"
+    }, 
+    {
+      "video_output_dev_type": "hdmi"
+    }, 
+    {
+      "sw_version": "YDXJv22_1.2.6_build-20150709090932_b1031_i841_s1038"
+    }, 
+    {
+      "hw_version": "YDXJ_v22"
+    }, 
+    {
+      "dual_stream_status": "on"
+    }, 
+    {
+      "streaming_status": "on"
+    }, 
+    {
+      "precise_cont_capturing": "off"
+    }, 
+    {
+      "piv_enable": "on"
+    }, 
+    {
+      "auto_low_light": "off"
+    }, 
+    {
+      "loop_record": "off"
+    }, 
+    {
+      "warp_enable": "off"
+    }, 
+    {
+      "support_auto_low_light": "on"
+    }, 
+    {
+      "precise_selftime": "15s"
+    }, 
+    {
+      "precise_self_running": "off"
+    }, 
+    {
+      "auto_power_off": "off"
+    }, 
+    {
+      "serial_number": "Z221509S2884591"
+    }, 
+    {
+      "system_mode": "record"
+    }, 
+    {
+      "system_default_mode": "record"
+    }, 
+    {
+      "start_wifi_while_booted": "on"
+    }, 
+    {
+      "quick_record_time": "0"
+    }, 
+    {
+      "precise_self_remain_time": "0"
+    }, 
+    {
+      "sdcard_need_format": "no-need"
+    }, 
+    {
+      "video_rotate": "off"
+    }, 
+    {
+      "emergency_file_backup": "off"
+    }, 
+    {
+      "osd_enable": "off"
+    }, 
+    {
+      "rec_default_mode": "record"
+    }, 
+    {
+      "rec_mode": "record"
+    }, 
+    {
+      "record_photo_time": "5"
+    }, 
+    {
+      "dev_functions": "55"
+    }, 
+    {
+      "rc_button_mode": "mode_shutter"
+    }
+  ], 
+  "rval": 0
+}
