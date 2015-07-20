@@ -5,6 +5,7 @@ Put some scripts into Yi Cam, and switch modes using button combinations.
 将一组脚本放置在小蚁运动相机里面，使用组合按键进行WiFi模式切换。
 
 ## Source File List(源文件列表):
+```
             install.ash
 install_no_password.ash
           uninstall.ash
@@ -13,7 +14,7 @@ install_no_password.ash
           ipaddress.txt
                ssid.txt
    ssid_no_password.txt
-
+```
 ## Installation(安装):
 Copy above files into root of tf card, rename install.ash to autoexec.ash, insert tf card to Yi Cam, then power on.
 
