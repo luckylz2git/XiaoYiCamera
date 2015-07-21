@@ -1,0 +1,3 @@
+title=Ponerine Beta 0.0.1
+author=lucky_lz
+orientation=portrait
