@@ -8,21 +8,25 @@ from kivy.app import App
 
 # import base64, functools, hashlib, json, os, platform, re, select, socket, subprocess, sys, tempfile, threading, time, tkFileDialog, tkMessageBox, urllib2, webbrowser, zlib
 import json, socket, threading, time, select
-
+#json.loads(string) >>> json
+#json.dumps(json) >>> string
 __version__='0.0.1'
 
 class Ponerine(BoxLayout):
   version = StringProperty(__version__)
-  JsonData = {}
+  JsonSTR = StringProperty()
+  JsonData = dict()
+  camconfig = dict()
   token = NumericProperty(0)
   Jsoncounter = NumericProperty(0)
   Jsonflip = NumericProperty(0)
   connected = BooleanProperty()
-  camconfig = {}
+  
   lock = False
   def CamConnect(self):
-    #try:
+    try:
       self.camaddr = "192.168.1.123"
+      #self.camaddr = "192.168.42.1"
       self.camport = 7878
       self.camdataport = 8787
       self.camwebport = 80
@@ -38,30 +42,22 @@ class Ponerine(BoxLayout):
       self.thread_read.setName('JsonReader')
       self.thread_read.start()
       waiter = 0
-      #self.token = ""
       while 1:
         if self.connected:
-          #print "self.token before empty", self.token
           if self.token == 0:
-            #print "self.token empty"
             break
-          print "UpdateUsage"
-          #self.UpdateUsage()
-          #self.UpdateBattery()
+          print "Connected"
+          self.UpdateUsage()
+          self.UpdateBattery()
           self.ReadConfig()
           self.SDOK = True
-          if self.camconfig["sd_card_status"] == "insert" and self.totalspace > 0:
+          if self.camconfig["sd_card_status"] == "insert":
             if self.camconfig["sdcard_need_format"] != "no-need":
-              if not self.ActionForceFormat():
-                self.SDOK = False
-                print "SD memory card not formatted!"
+              self.SDOK = False
+              print "SD memory card not formatted!"
           else:
             self.SDOK = False
-            print "No SD memory card inserted in camera!"
-    
-          if self.SDOK == True:
-            print "SD Usage: "
-            print "Battery: "
+            print "No SD memory card inserted in camera!"    
           break
         else:
           if waiter <=5:
@@ -69,21 +65,14 @@ class Ponerine(BoxLayout):
             waiter += 1
           else:
             raise Exception('Connection', 'failed') #throw an exception
-
-    #except Exception as e:
-      #self.connected = False
-      #print "Connect Error:", "Cannot connect to the address specified"
-      #self.srv.close()
-  def SetJsonData(self, key, value):
-    if self.JsonData=="":
-      pjson={}
-    else:
-      pjson=self.JsonData
-    pjson[key]=value
-    self.JsonData=json.dumps(pjson)
-    
+    except Exception as e:
+      print "CamConn", e
+      self.connected = False
+      #tkMessageBox.showerror("Connect", "Cannot connect to the address specified")
+      self.srv.close()
+      
   def JsonReader(self):
-    self.JsonData = ""
+    self.JsonSTR = ""
     self.Jsoncounter = 0
     self.Jsonflip = 0
     initcounter = 0
@@ -100,8 +89,7 @@ class Ponerine(BoxLayout):
         self.JsonLoop()
 
   def JsonLoop(self):
-    if not self.lock:
-    #try:
+    try:
       ready = select.select([self.srv], [], [])
       if ready[0]:
         byte = self.srv.recv(1)
@@ -110,21 +98,17 @@ class Ponerine(BoxLayout):
           self.Jsonflip = 1
         elif byte == "}":
           self.Jsoncounter -= 1
-        self.JsonData += byte
+        self.JsonSTR += byte
         
         if self.Jsonflip == 1 and self.Jsoncounter == 0:
-     #     try:
-            data_dec = json.loads(self.JsonData)
-            #print self.JsonData
-            #print "one piece json:", data_dec
-            self.JsonData = ""
+          try:
+            data_dec = json.loads(self.JsonSTR)
+            print "recv", json.dumps(data_dec,sort_keys=True,indent=2)
+            self.JsonSTR = ""
             self.Jsonflip = 0
             if "msg_id" in data_dec.keys():
-              #print "msg_id:", data_dec["msg_id"]
               if data_dec["msg_id"] == 257:
-                #print "param:", data_dec["param"]
                 self.token = data_dec["param"]
-                print "Loop token:", self.token
               elif data_dec["msg_id"] == 7:
                 if "type" in data_dec.keys() and "param" in data_dec.keys():
                   if data_dec["type"] == "battery":
@@ -151,79 +135,75 @@ class Ponerine(BoxLayout):
                       self.thread_ReadConfig.setDaemon(True)
                       self.thread_ReadConfig.setName('ReadConfig')
                       self.thread_ReadConfig.start()
-              print "msg_id, data_dec, JsonData before/after"
-              print "**************************"
-              print data_dec["msg_id"]
-              print data_dec
-              print len(self.JsonData), self.JsonData
-              #self.JsonData[data_dec["msg_id"]] = data_dec
-              self.SetJsonData(data_dec["msg_id"],data_dec)
-              print len(self.JsonData), self.JsonData
+              self.JsonData[data_dec["msg_id"]] = data_dec
             else:
               raise Exception('Unknown','data')
-      #    except Exception as e:
-       #     print data, e
-    #except Exception:
-     # self.connected = False
-      
-  def ReadConfig(self):
-    tosend = '{"msg_id":3,"token":%s}' %self.token 
-    print "tosend", tosend
-    print self.srv.recv(1024)
-    #resp = self.Comm(tosend)
-    self.camconfig = {}
-    for each in resp["param"]: self.camconfig.update(each)      
-  
-  def UpdateUsage(self):
-    self.lock = True
-    tosend = '{"msg_id":5,"token":%d,"type":"total"}' %self.token
-    #self.totalspace = self.Comm(tosend)["param"]
-    self.srv.send(tosend)
-    while not select.select([self.srv], [], []): continue
-    total = self.srv.recv(1024)
-    print "total:", total
-    tosend = '{"msg_id":5,"token":%d,"type":"free"}' %self.token
-    self.srv.send(tosend)
-    while not select.select([self.srv], [], []): continue
-    free = self.srv.recv(1024)
-    print "free:", free
-    self.lock = False
+          except Exception as e:
+            print "JsonLoop", e, data
+    except Exception:
+      self.connected = False
 
   def Comm(self, tosend):
     Jtosend = json.loads(tosend)
-    msgid = "%d" %Jtosend["msg_id"]
-    print "MSG ID:", msgid
-    print "Comm Start:", self.JsonData
-    Jdata = json.loads(self.JsonData)
-    Jdata[msgid] = ""
-    self.JsonData = json.dumps(Jdata)
-    print "Comm 1:", self.JsonData
+    msgid = Jtosend["msg_id"]
+    self.JsonData[msgid] = ""
+    print "send", tosend
     self.srv.send(tosend)
-    while 1:
-      try: 
-        Jdata = json.loads(self.JsonData)
-        if Jdata[msgid] != "":
-          break
-      except:
-        continue
-
-    Jdata = json.loads(self.JsonData)
-    if Jdata[msgid]["rval"] == -4:
+    while self.JsonData[msgid]=="":continue
+    if self.JsonData[msgid]["rval"] == -4: #wrong token, ackquire new one & resend - "workaround" for camera insisting on tokens
       self.token = 0
       self.srv.send('{"msg_id":257,"token":0}')
       while self.token==0:continue
       Jtosend["token"] = self.token
       tosend = json.dumps(Jtosend)
-      Jdata = json.loads(self.JsonData)
-      Jdata[msgid] = ""
-      self.JsonData = json.dumps(Jdata)
+      self.JsonData[msgid] = ""
+      print "send", tosend
       self.srv.send(tosend)
-      #while self.JsonData[msgid]=="":continue
-      while 1:
-        Jdata = json.loads(self.JsonData)
-        if Jdata[msgid] != "":break 
-    return Jdata[msgid]
-    
+      while self.JsonData[msgid]=="":continue
+    return self.JsonData[msgid]
+      
+  def ReadConfig(self):
+    tosend = '{"msg_id":3,"token":%d}' %self.token 
+    resp = self.Comm(tosend)
+    self.camconfig = {}
+    for each in resp["param"]: self.camconfig.update(each)
+  
+  def LoadSetting(self):
+    self.UpdateBattery()
+    self.UpdateUsage()
+    self.ReadConfig()
+  
+  def UpdateUsage(self):
+    tosend = '{"msg_id":5,"token":%d,"type":"total"}' %self.token
+    totalspace = self.Comm(tosend)["param"]
+    tosend = '{"msg_id":5,"token":%d,"type":"free"}' %self.token
+    freespace = float(self.Comm(tosend)["param"])
+    usedspace = totalspace - freespace
+    totalpre = 0
+    usedpre = 0
+    while usedspace > 1024:
+      usedspace = usedspace/float(1024)
+      usedpre += 1
+    while totalspace > 1024:
+      totalspace = totalspace/float(1024)
+      totalpre += 1
+    pres = ["kB", "MB", "GB", "TB"]
+    usage = "Used %.1f%s of %.1f%s" %(usedspace, pres[usedpre], totalspace, pres[totalpre])
+    print "SD Card %s" %usage
+  
+  def UpdateBattery(self):
+    tosend = '{"msg_id":13,"token":%d}' %self.token
+    resp = self.Comm(tosend)
+    Ctype = resp["type"]
+    charge = resp["param"]
+                          
+    if Ctype == "adapter":
+      Ctype = "Charging"
+    else:
+      Ctype = "Battery"
+    battery = "%s: %s%%" %(Ctype, charge)
+    print "Battery %s" %battery
+
 class PonerineApp(App):
   def build(self):
     return Ponerine()
