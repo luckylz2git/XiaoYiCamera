@@ -17,6 +17,18 @@ poweroff yes
 # reboot Yi Cam
 reboot yes
 
+# use autoexec.ash to read some byte(s) value from address, readb(1-byte), readw(2-bytes), readl(4-bytes)
+# d:/ == /tmp/fuse_d/
+readw 0xC0396E64 > d:/307A.txt
+# read fw version(1.2.6) sub number(6)
+readb 0xC02DD3D8 > d:/version6.txt
+
+# write value to address, writeb(1-byte), writew(2-bytes), writel(4-bytes)
+# set file size limit to 4GB
+writew 0xC0396E64 0x2004
+# write fw version(1.2.6) sub number(6->7)
+writeb 0xC02DD3D8 0x37
+
 # =====================
 # Test Failure Commands
 # =====================
