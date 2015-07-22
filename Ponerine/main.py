@@ -3,42 +3,65 @@ from kivy.uix.floatlayout import FloatLayout
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.button import Button
 from kivy.uix.widget import Widget
-from kivy.properties import NumericProperty, BooleanProperty, StringProperty
+from kivy.properties import DictProperty, NumericProperty, BooleanProperty, StringProperty, ObjectProperty
 from kivy.app import App
+from kivy.core.window import Window
 
 # import base64, functools, hashlib, json, os, platform, re, select, socket, subprocess, sys, tempfile, threading, time, tkFileDialog, tkMessageBox, urllib2, webbrowser, zlib
-import json, socket, threading, time, select
+import json, socket, threading, time, select, os
 #json.loads(string) >>> json
 #json.dumps(json) >>> string
 __version__='0.0.1'
 
 class Ponerine(BoxLayout):
+  debug = True
+  if os.name == "nt":
+    Window.size = (600,900)
+  Width = list(Window.size)[0]
   version = StringProperty(__version__)
   JsonSTR = StringProperty()
-  JsonData = dict()
-  camconfig = dict()
+  JsonData = DictProperty()
+  camconfig = DictProperty()
   token = NumericProperty(0)
   Jsoncounter = NumericProperty(0)
   Jsonflip = NumericProperty(0)
   connected = BooleanProperty()
   btnConnect = "Connect to XiaoYi"
-  
+  #srv = ObjectProperty()
   lock = False
+
+  def Debug(self):
+    if self.debug:
+      self.ids.btnDebug.color=(1,1,1,1)
+      self.ids.txtDebug.foreground_color=(1,1,1,1)
+    if len(self.ids.txtDebug.text)>0:
+      self.ids.txtDebug.text = ""
+      
+  def ShowDebug(self, str):
+    if self.debug:
+      if str != "":
+        self.ids.txtDebug.text += "\n%s" %str
+  
+  def CamConnect1(self):  
+    self.ids.btnConnect.disabled = True
+
   def CamConnect(self):
     try:
       #self.camaddr = "192.168.1.123"
       #self.camaddr = "192.168.42.1"
-      self.camaddr = self.ids.txtCamAddress.text
-      self.camport = 7878
-      self.camdataport = 8787
-      self.camwebport = 80
+      #self.ids.txtDebug.text = ""
+      camaddr = self.ids.txtCamAddress.text
+      camport = 7878
+      camdataport = 8787
+      camwebport = 80
       self.token = 0
-      print self.camaddr, self.camport, self.camdataport, self.camwebport
+      #print self.camaddr, self.camport, self.camdataport, self.camwebport
+      print camaddr, camport, camdataport, camwebport
       socket.setdefaulttimeout(5)
       self.srv = socket.socket(socket.AF_INET, socket.SOCK_STREAM) #create socket
       self.srv.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
       self.srv.setsockopt(socket.IPPROTO_TCP, socket.TCP_NODELAY, 1)
-      self.srv.connect((self.camaddr, self.camport)) #open socket
+      self.srv.connect((camaddr, camport)) #open socket
       self.thread_read = threading.Thread(target=self.JsonReader)
       self.thread_read.setDaemon(True)
       self.thread_read.setName('JsonReader')
@@ -46,9 +69,15 @@ class Ponerine(BoxLayout):
       waiter = 0
       while 1:
         if self.connected:
+          time.sleep(3)
+          self.ids.btnDisconnect.disabled = False
+          self.ids.btnTakePhoto.disabled = False
+          self.ids.btnRecordVideo.disabled = False
           if self.token == 0:
             break
           print "Connected"
+          self.ids.btnConnect.text = "Connected %d" %self.token
+          self.ShowDebug("Connected")
           self.UpdateUsage()
           self.UpdateBattery()
           self.ReadConfig()
@@ -57,9 +86,11 @@ class Ponerine(BoxLayout):
             if self.camconfig["sdcard_need_format"] != "no-need":
               self.SDOK = False
               print "SD memory card not formatted!"
+              self.ShowDebug("SD memory card not formatted!")
           else:
             self.SDOK = False
-            print "No SD memory card inserted in camera!"    
+            print "No SD memory card inserted in camera!"
+            self.ShowDebug("No SD memory card inserted in camera!")
           break
         else:
           if waiter <=5:
@@ -69,8 +100,9 @@ class Ponerine(BoxLayout):
             raise Exception('Connection', 'failed') #throw an exception
     except Exception as e:
       print "CamConn", e
+      self.ShowDebug("CamConn() Error %s" %e)
       self.connected = False
-      self.btnConnect = "Connect to XiaoYi"
+      self.btnConnect = "Connect"
       #tkMessageBox.showerror("Connect", "Cannot connect to the address specified")
       self.srv.close()
       
@@ -88,7 +120,7 @@ class Ponerine(BoxLayout):
     if len(self.JsonData) > 0:
       self.srv.setblocking(0)
       self.connected = True
-      self.ids.btnConnect.text = "XiaoYi Connected %d" %self.token
+      self.ids.btnConnect.text = "Connected %d" %self.token
       while self.connected:
         self.JsonLoop()
 
@@ -108,12 +140,13 @@ class Ponerine(BoxLayout):
           try:
             data_dec = json.loads(self.JsonSTR)
             print "recv", json.dumps(data_dec,sort_keys=True,indent=2)
+            self.ShowDebug("%s" %data_dec)
             self.JsonSTR = ""
             self.Jsonflip = 0
             if "msg_id" in data_dec.keys():
               if data_dec["msg_id"] == 257:
                 self.token = data_dec["param"]
-                self.ids.btnConnect.text = "XiaoYi Connected %d" %self.token
+                self.ids.btnConnect.text = "Connected %d" %self.token
               elif data_dec["msg_id"] == 7:
                 if "type" in data_dec.keys() and "param" in data_dec.keys():
                   if data_dec["type"] == "battery":
@@ -150,7 +183,7 @@ class Ponerine(BoxLayout):
             print "JsonLoop", e, data
     except Exception:
       self.connected = False
-      self.btnConnect = "Connect to XiaoYi"
+      self.btnConnect = "Connect"
 
   def Comm(self, tosend):
     Jtosend = json.loads(tosend)
@@ -199,6 +232,7 @@ class Ponerine(BoxLayout):
     pres = ["kB", "MB", "GB", "TB"]
     usage = "Used %.1f%s of %.1f%s" %(usedspace, pres[usedpre], totalspace, pres[totalpre])
     print "SD Card %s" %usage
+    self.ShowDebug("SD Card %s" %usage)
   
   def UpdateBattery(self):
     tosend = '{"msg_id":13,"token":%d}' %self.token
@@ -212,12 +246,13 @@ class Ponerine(BoxLayout):
       Ctype = "Battery"
     battery = "%s: %s%%" %(Ctype, charge)
     print "Battery %s" %battery
+    self.ShowDebug("Battery %s" %battery)
   
   def TakePhoto(self):
     tosend = '{"msg_id":769,"token":%s}' %self.token
     self.Comm(tosend)
     
-  def StartRecord(self):
+  def RecordVideo(self):
     tosend = '{"msg_id":513,"token":%s}' %self.token
     self.Comm(tosend)
     
@@ -225,8 +260,12 @@ class Ponerine(BoxLayout):
     tosend = '{"msg_id":514,"token":%s}' %self.token
     self.Comm(tosend)
   def Disconnect(self):
-    tosend = '{"msg_id":258,"token":%s}' %self.token
-    self.Comm(tosend)
+    if self.token != 0:
+      tosend = '{"msg_id":258,"token":%s}' %self.token
+      #tosend = '{"msg_id":515,"token":%s}' %self.token
+      self.Comm(tosend)
+    #self.ids.txtDebug.text += "\nWindow Size %s" %(str(Window.size))
+    exit()
 
 class PonerineApp(App):
   def build(self):
@@ -234,6 +273,8 @@ class PonerineApp(App):
   
   def on_pause(self):
     return True
+    
 
 if __name__ == '__main__':
+  print Window.size
   PonerineApp().run()
