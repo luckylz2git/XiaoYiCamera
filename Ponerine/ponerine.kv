@@ -23,7 +23,7 @@
     size_hint: 1, 8
   # IP ADDRESS
   GridLayout:
-    cols: 2
+    cols: 3
     size_hint: 1, 0.7
     pos_hint: {'top': 1}
     Label:
@@ -37,13 +37,19 @@
       font_size: int(root.Width/20)
       padding: [root.Width/50, (self.height - self.line_height)/2]
       text: '192.168.42.1'
+    Label:
+      size_hint: 1, 0.8
+      id: lblRecordTime
+      color: 1, 0, 0, 0.8
+      font_size: int(root.Width/25)
+      #text: '00:00:00'
   GridLayout:
     cols: 2
     padding: 10
     spacing: 10
     size_hint: 1, 2
     pos_hint: {'top': 1}
-    Button:
+    ToggleButton:
       id: btnConnect
       color: (1, 1, 1, 1)
       font_size: int(root.Width/25)
@@ -51,13 +57,13 @@
       size_hint: .5, 1
       on_press: root.CamConnect()
     Button:
-      id: btnDisconnect
+      id: btnFindCam
       color: (1, 1, 1, 1)
       font_size: int(root.Width/25)
-      text: 'Disconnect'
+      text: 'Find Camera'
       size_hint: 0.5, 1
       disabled: True
-      on_press: root.Disconnect()
+      on_press: root.FindCam()
     ToggleButton:
       id: btnTakePhoto
       color: (1, 1, 1, 1)

@@ -6,7 +6,9 @@ from kivy.uix.widget import Widget
 from kivy.properties import DictProperty, NumericProperty, BooleanProperty, StringProperty, ObjectProperty
 from kivy.app import App
 from kivy.core.window import Window
+from kivy.clock import Clock
 
+from Queue import Queue
 # import base64, functools, hashlib, json, os, platform, re, select, socket, subprocess, sys, tempfile, threading, time, tkFileDialog, tkMessageBox, urllib2, webbrowser, zlib
 import json, socket, threading, time, select, os
 #json.loads(string) >>> json
@@ -14,19 +16,25 @@ import json, socket, threading, time, select, os
 __version__='0.0.1'
 
 class Ponerine(BoxLayout):
-  debug = True
-  if os.name == "nt":
-    Window.size = (600,900)
+  JsonSend = Queue()
+  #if os.name == "nt":
+    #Window.size = (600,900)
+  #else:
+  #  Window.size = (700,900)
   Width = list(Window.size)[0]
+  JsonData = DictProperty()
+  debug = True
   version = StringProperty(__version__)
   JsonSTR = StringProperty()
-  JsonData = DictProperty()
+  
   camconfig = DictProperty()
   token = NumericProperty(0)
   Jsoncounter = NumericProperty(0)
   Jsonflip = NumericProperty(0)
   connected = BooleanProperty()
-  btnConnect = "Connect to XiaoYi"
+  started = BooleanProperty()
+  readcfg = BooleanProperty()
+  #btnConnect = "Connect to XiaoYi"
   #srv = ObjectProperty()
   lock = False
 
@@ -42,14 +50,29 @@ class Ponerine(BoxLayout):
       if str != "":
         self.ids.txtDebug.text += "\n%s" %str
   
-  def CamConnect1(self):  
-    self.ids.btnConnect.disabled = True
+  def CamConnect(self):  
+    if self.ids.btnConnect.text == "Connect":
+      self.ids.btnConnect.state = "down"
+      self.ids.btnConnect.text = "Connecting ..."
+      self.ids.btnConnect.disabled = True
+      Clock.schedule_once(lambda dt: self.CamConnect1())
+    elif self.ids.btnConnect.text == "Connecting ...":
+      print "Connecting"
+    else:
+      self.ids.btnConnect.disabled = True
+      self.ids.btnConnect.state = "normal"
+      self.ids.btnConnect.text = "Connect"
+      tosend = '{"msg_id":258,"token":%s}' %self.token
+      #tosend = '{"msg_id":515,"token":%s}' %self.token
+      self.Comm(tosend)
 
-  def CamConnect(self):
+  def CamConnect1(self):
     try:
+      self.readcfg = False
       #self.camaddr = "192.168.1.123"
       #self.camaddr = "192.168.42.1"
       #self.ids.txtDebug.text = ""
+      #self.ids.btnConnect.text = "Connecting ..."
       camaddr = self.ids.txtCamAddress.text
       camport = 7878
       camdataport = 8787
@@ -69,14 +92,15 @@ class Ponerine(BoxLayout):
       waiter = 0
       while 1:
         if self.connected:
-          time.sleep(3)
-          self.ids.btnDisconnect.disabled = False
+          self.ids.btnFindCam.disabled = False
           self.ids.btnTakePhoto.disabled = False
           self.ids.btnRecordVideo.disabled = False
+          #time.sleep(1)
           if self.token == 0:
             break
           print "Connected"
-          self.ids.btnConnect.text = "Connected %d" %self.token
+          #self.ids.btnConnect.text = "Connected %d" %self.token
+          self.ids.btnConnect.text = "Connected"
           self.ShowDebug("Connected")
           self.UpdateUsage()
           self.UpdateBattery()
@@ -116,17 +140,29 @@ class Ponerine(BoxLayout):
       self.JsonLoop()
       initcounter += 1
       if len(self.JsonData) > 0:
+      #if len(self.JsonSTR) > 0:
         break
     if len(self.JsonData) > 0:
+    #if len(self.JsonSTR) > 0:
       self.srv.setblocking(0)
       self.connected = True
-      self.ids.btnConnect.text = "Connected %d" %self.token
+      self.ids.btnConnect.text = "Connected"
       while self.connected:
         self.JsonLoop()
 
+  def Sec2Hrs(self, seconds):
+    if type(seconds) == type(1):
+      hh = seconds / 3600
+      mm = (seconds - 3600 * hh) / 60
+      ss = seconds - (3600 * hh + 60 * mm)
+      return "%02d:%02d:%02d" %(hh,mm,ss)
+    else:
+      return "00:00:00"
+      
   def JsonLoop(self):
     try:
       ready = select.select([self.srv], [], [])
+      #print "Ready ? ", ready
       if ready[0]:
         byte = self.srv.recv(1)
         if byte == "{":
@@ -146,36 +182,75 @@ class Ponerine(BoxLayout):
             if "msg_id" in data_dec.keys():
               if data_dec["msg_id"] == 257:
                 self.token = data_dec["param"]
-                self.ids.btnConnect.text = "Connected %d" %self.token
+                self.ids.btnConnect.disabled = False
+                self.ids.btnConnect.text = "Connected"
               elif data_dec["msg_id"] == 7:
-                if "type" in data_dec.keys() and "param" in data_dec.keys():
-                  if data_dec["type"] == "battery":
-                    self.thread_Battery = threading.Thread(target=self.UpdateBattery)
-                    self.thread_Battery.setName('UpdateBattery')
-                    self.thread_Battery.start()
-                  elif data_dec["type"] == "start_photo_capture":
-                    if self.camconfig["capture_mode"] == "precise quality cont.":
-                      print "TimeLapse"
-                      #self.bphoto.config(text="Stop\nTIMELAPSE", bg="#ff6666")
-                      #self.brecord.config(state=DISABLED) 
-                      #self.brecord.update_idletasks()
-                      #self.bphoto.update_idletasks()
-                      #self.thread_ReadConfig = threading.Thread(target=self.ReadConfig)
-                      #self.thread_ReadConfig.setDaemon(True)
-                      #self.thread_ReadConfig.setName('ReadConfig')
-                      #self.thread_ReadConfig.start()
-                  elif data_dec["type"] == "precise_cont_complete":
-                    if self.camconfig["capture_mode"] == "precise quality cont.":
-                      print "TimeLapse"
-                      #self.bphoto.config(text="Start\nTIMELAPSE", bg="#66ff66")
-                      #self.brecord.config(state="normal") 
-                      #self.brecord.update_idletasks()
-                      #self.bphoto.update_idletasks()
-                      #self.thread_ReadConfig = threading.Thread(target=self.ReadConfig)
-                      #self.thread_ReadConfig.setDaemon(True)
-                      #self.thread_ReadConfig.setName('ReadConfig')
-                      #self.thread_ReadConfig.start()
-              self.JsonData[data_dec["msg_id"]] = data_dec
+                if "type" in data_dec.keys():
+                  if "param" in data_dec.keys():
+                    if data_dec["type"] == "battery":
+                      self.thread_Battery = threading.Thread(target=self.UpdateBattery)
+                      self.thread_Battery.setName('UpdateBattery')
+                      self.thread_Battery.start()
+                    elif data_dec["type"] == "start_photo_capture":
+                      if self.camconfig["capture_mode"] == "precise quality cont.":
+                        print "TimeLapse"
+                    elif data_dec["type"] == "precise_cont_complete":
+                      if self.camconfig["capture_mode"] == "precise quality cont.":
+                        print "TimeLapse"
+                    elif data_dec["type"] == "photo_taken":
+                      #print "Photo:", data_dec["param"]
+                      self.ShowDebug("Photo: %s" %data_dec["param"])
+                      self.ids.btnTakePhoto.text = "Take Photo"
+                      self.ids.btnTakePhoto.disabled = False
+                      self.ids.btnTakePhoto.state = "normal"
+                    elif data_dec["type"] == "video_record_complete":
+                      self.ShowDebug("Video: %s" %data_dec["param"])
+                      self.ids.btnRecordVideo.disabled = False
+                      self.ids.btnRecordVideo.state = "normal"
+                      self.ids.btnRecordVideo.text = "Start Record"
+                  # no param in the msg
+                  else:
+                    if data_dec["type"] == "start_video_record":
+                      self.ids.btnRecordVideo.disabled = False
+                      self.ids.btnRecordVideo.text = "Stop Record"
+                      self.started = True
+                      Clock.schedule_interval(lambda dt: self.RecordTime(), 1)
+                      #data_dec.clear()
+                      #self.RecordTime()
+                    elif data_dec["type"] == "wifi_will_shutdown":
+                      self.connected = False
+                      self.token = 0
+                      self.ids.btnConnect.state = "normal"
+                      self.ids.btnConnect.text = "Connect"
+                      self.ids.btnFindCam.disabled = True
+                      self.ids.btnTakePhoto.disabled = True
+                      self.ids.btnRecordVideo.disabled = True
+                      #data_dec.clear()
+              elif data_dec["msg_id"] == 258:
+                self.connected = False
+                self.token = 0
+                self.ids.btnConnect.disabled = False
+                self.ids.btnFindCam.disabled = True
+                self.ids.btnTakePhoto.disabled = True
+                self.ids.btnRecordVideo.disabled = True
+              elif data_dec["msg_id"] == 513:
+                #self.ids.btnRecordVideo.disabled = False
+                self.ids.btnRecordVideo.text = "Recording ..."
+              elif data_dec["msg_id"] == 514:
+                self.started = False
+                self.ids.btnRecordVideo.disabled = True
+                self.ids.btnRecordVideo.text = "Stopping ..."
+                Clock.unschedule(self.RecordTime())
+              elif data_dec["msg_id"] == 515:
+                if data_dec["rval"] == -14:
+                  self.started = False
+                  Clock.unschedule(self.RecordTime())
+                else:
+                  self.ids.lblRecordTime.text = self.Sec2Hrs(data_dec["param"])
+                  #print "Record Time:", data_dec["param"], "second(s)"
+              
+              if len(data_dec) > 0:
+                self.JsonData[data_dec["msg_id"]] = data_dec
             else:
               print "unknown data %s" %data_dec
               #raise Exception('Unknown','data')
@@ -205,6 +280,7 @@ class Ponerine(BoxLayout):
     return self.JsonData[msgid]
       
   def ReadConfig(self):
+    self.readcfg = True
     tosend = '{"msg_id":3,"token":%d}' %self.token 
     resp = self.Comm(tosend)
     self.camconfig = {}
@@ -249,23 +325,53 @@ class Ponerine(BoxLayout):
     self.ShowDebug("Battery %s" %battery)
   
   def TakePhoto(self):
+    self.ids.btnTakePhoto.text = "Taking ..."
+    self.ids.btnTakePhoto.disabled = True
+    if not self.readcfg: 
+      self.ReadConfig()
     tosend = '{"msg_id":769,"token":%s}' %self.token
     self.Comm(tosend)
     
   def RecordVideo(self):
+    self.ShowDebug(str(self.ids.btnRecordVideo.state))
+    self.ids.btnRecordVideo.disabled = True
+    if self.ids.btnRecordVideo.text == "Start Record":
+      #self.ids.btnRecordVideo.text = "Stop Record"
+      #self.ids.btnRecordVideo.disabled = True
+      self.StartRecord()
+    else:
+      #self.ids.btnRecordVideo.text = "Start Record"
+      #self.ids.btnRecordVideo.disabled = True
+      self.StopRecord()
+      
+  def RecordTime(self):
+    if self.started:
+      tosend = '{"msg_id":515,"token":%s}' %self.token
+      self.Comm(tosend)
+    
+  def StartRecord(self):
     tosend = '{"msg_id":513,"token":%s}' %self.token
     self.Comm(tosend)
     
   def StopRecord(self):
     tosend = '{"msg_id":514,"token":%s}' %self.token
     self.Comm(tosend)
-  def Disconnect(self):
-    if self.token != 0:
-      tosend = '{"msg_id":258,"token":%s}' %self.token
-      #tosend = '{"msg_id":515,"token":%s}' %self.token
-      self.Comm(tosend)
-    #self.ids.txtDebug.text += "\nWindow Size %s" %(str(Window.size))
-    exit()
+    for thread in threading.enumerate():
+      if thread.name == "RecordTime":
+        try:
+          thread._Thread__stop()
+        except:
+          pass
+
+  def FindCam(self):
+    tosend = '{"msg_id":2,"token":%s, "type":"buzzer_ring", "param":"on"}' %self.token
+    #tosend = '{"msg_id":9,"param":"buzzer_ring","token":%s}' %self.token
+    #tosend = '{"msg_id":9,"param":"buzzer_ring","option":"on","token":%s}' %self.token
+    #tosend = '{"msg_id":3,"param":"{"buzzer_ring":"on"}": "token":%s}' %self.token
+    self.Comm(tosend)
+    time.sleep(1)
+    tosend = '{"msg_id":2,"token":%s, "type":"buzzer_ring", "param":"off"}' %self.token
+    self.Comm(tosend)
 
 class PonerineApp(App):
   def build(self):
