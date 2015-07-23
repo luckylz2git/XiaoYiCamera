@@ -7,7 +7,8 @@ title = Ponerine
 package.name = ponerine
 
 # (str) Package domain (needed for android/ios packaging)
-package.domain = org.test
+#package.domain = org.test
+package.domain = chn.luckylz
 
 # (str) Source code where the main.py live
 source.dir = .
@@ -55,7 +56,8 @@ fullscreen = 0
 #
 
 # (list) Permissions
-android.permissions = INTERNET,WRITE_EXTERNAL_STORAGE
+android.permissions = INTERNET
+#WRITE_EXTERNAL_STORAGE
 
 # (int) Android API to use
 #android.api = 14
