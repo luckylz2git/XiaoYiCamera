@@ -7,13 +7,12 @@ class Camera():
     self.port = port
     self.socketopen = -1
     self.qsend = Queue()
-    self.qrecv = Queue()
     self.token = 0
     self.recv = ""
     self.link = False
     self.jsonon = False
     self.jsonoff = 0
-    self.busy = False
+    self.busy = 0
   def __str__(self):
     info = dict()
     info["ip"] = self.ip
@@ -35,19 +34,45 @@ class Camera():
     self.qsend.put(msg)
     
   def ThreadSend(self):
-    print "send"
+    print "ThreadSend Starts\n"
     if self.socketopen <> 0:
       self.Connect()
-      print '{"msg_id":257,"token":0}'
+      print 'sent out: {"msg_id":257,"token":0}'
+      self.busy = 257
       self.srv.send('{"msg_id":257,"token":0}')
-    while not self.link: pass
+    while not self.link:
+      pass
     while True:
-      if not self.busy:
+      if self.busy == 0:
         data = json.loads(self.qsend.get())
         data["token"] = self.token
-        print data
+        print "sent out:", json.dumps(data, indent=2)
+        self.busy = data["msg_id"]
         self.srv.send(json.dumps(data))
         
+  def JsonHandle(self, data):
+    print "received:", json.dumps(data, indent=2)
+    if "rval" in data.keys():
+      if self.busy == data["msg_id"]:
+        self.busy = 0
+      if data["rval"] == -4:
+        self.token = 0
+        self.link = False
+        self.SendMsg('{"msg_id":257}')
+        self.SendMsg('{"msg_id":%d}' %data["msg_id"])
+      else:
+        '''
+        other rval:
+        -9: msg 2 needs options
+        -14: msg 515 not available
+        '''
+      if data["msg_id"] == 257:
+        self.token = data["param"]
+        self.link = True
+    else:
+      print "info data"
+      #self.busy = 0
+    
   def RecvMsg(self):
     try:
       ready = select.select([self.srv], [], [])
@@ -60,19 +85,15 @@ class Camera():
           self.jsonoff -= 1
         self.recv += byte
         if self.jsonon and self.jsonoff == 0:
-          data_dec = json.loads(self.recv)
-          print data_dec
-          if data_dec["msg_id"] == 257:
-            self.token = data_dec["param"]
-            self.link = True
-          self.qrecv.put(self.recv)
+          self.JsonHandle(json.loads(self.recv))
           self.recv = ""
     except Exception as err:
       self.link = False
       print "error", err
       
   def ThreadRecv(self):
-    print "recv"
+    print "ThreadRecv Starts\n"
+    while self.socketopen: pass
     while True:
       self.RecvMsg()
     
@@ -82,7 +103,7 @@ class Camera():
     self.srv.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
     self.srv.setsockopt(socket.IPPROTO_TCP, socket.TCP_NODELAY, 1)
     self.socketopen = self.srv.connect_ex((self.ip, self.port))
-    print "socket: %d" %self.socketopen
+    print "socket status: %d" %self.socketopen
     
   def Disconnect(self):
     if self.socketopen == 0:
