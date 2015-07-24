@@ -21,3 +21,4 @@ rec_mode record_photo
 #new.SendMsg('{"msg_id":514}')
 #new.SendMsg('{"msg_id":515}')
 #new.SendMsg('{"msg_id":2,"type":"rec_mode","param":"record_photo"}')
+new.SendMsg('{"msg_id":258}')
