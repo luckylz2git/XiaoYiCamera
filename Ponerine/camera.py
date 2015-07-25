@@ -14,7 +14,9 @@ class Camera():
     self.jsonoff = 0
     self.msgbusy = 0
     self.cambusy = False
+    self.showtime = True
     self.status = {}
+    
   def __str__(self):
     info = dict()
     info["ip"] = self.ip
@@ -36,24 +38,28 @@ class Camera():
     self.qsend.put(msg)
     
   def ThreadSend(self):
-    print "ThreadSend Starts\n"
+    #print "ThreadSend Starts\n"
     if self.socketopen <> 0:
       i = 0
       while self.socketopen <> 0 and i < 5:
         i += 1
         print "try to connect socket %d" %i
         self.Connect()
-    print "wait for token from camera"
+    #print "wait for token from camera"
     while not self.link:
       pass
-    print "start sending loop"
+    #print "start sending loop"
     while True:
       if self.msgbusy == 0:
         data = json.loads(self.qsend.get())
-        data["token"] = self.token
-        print "sent out:", json.dumps(data, indent=2)
-        self.msgbusy = data["msg_id"]
-        self.srv.send(json.dumps(data))
+        sendout = True
+        if data["msg_id"] == 515 and not self.status["recording"]:
+          sendout = False
+        if sendout:
+          data["token"] = self.token
+          print "sent out:", json.dumps(data, indent=2)
+          self.msgbusy = data["msg_id"]
+          self.srv.send(json.dumps(data))
         
   def JsonHandle(self, data):
     print "received:", json.dumps(data, indent=2)
@@ -64,8 +70,10 @@ class Camera():
       if data["rval"] == -4:
         self.token = 0
         self.link = False
-        self.SendMsg('{"msg_id":257}')
+        self.srv.send('{"msg_id":257,"token":0}')
         self.SendMsg('{"msg_id":%d}' %data["msg_id"])
+      elif data["rval"] < 0:
+        data["msg_id"] = 0
       '''
       other rval:
       -9: msg 2 needs options
@@ -89,7 +97,12 @@ class Camera():
       elif data["msg_id"] == 513:
         self.cambusy = True
       elif data["msg_id"] == 514:
+        self.status["recording"] = False
         self.cambusy = True
+      elif data["msg_id"] == 515:
+        self.status["recordtime"] = data["param"]
+        if self.showtime and self.status["recording"]:
+          self.SendMsg('{"msg_id":515}')
         
     # status message: msg_id = 7
     elif data["msg_id"] == 7:
@@ -113,25 +126,30 @@ class Camera():
       else:
         if data["type"] == "start_video_record":
           self.cambusy = False
+          self.status["recording"] = True
+          if self.showtime:
+            self.SendMsg('{"msg_id":515}')
+            self.status["recordtime"] = 0
       print "camera status:", json.dumps(self.status, indent=2)
     
   def RecvMsg(self):
     try:
-      ready = select.select([self.srv], [], [])
-      if ready[0]:
-        byte = self.srv.recv(1)
-        if byte == "{":
-          self.jsonon = True
-          self.jsonoff += 1
-        elif byte == "}":
-          self.jsonoff -= 1
-        self.recv += byte
-        if self.jsonon and self.jsonoff == 0:
-          self.JsonHandle(json.loads(self.recv))
-          self.recv = ""
+      if self.socketopen == 0:
+        ready = select.select([self.srv], [], [])
+        if ready[0]:
+          byte = self.srv.recv(1)
+          if byte == "{":
+            self.jsonon = True
+            self.jsonoff += 1
+          elif byte == "}":
+            self.jsonoff -= 1
+          self.recv += byte
+          if self.jsonon and self.jsonoff == 0:
+            self.JsonHandle(json.loads(self.recv))
+            self.recv = ""
     except Exception as err:
       self.link = False
-      print "error", err
+      print "RecvMsg error", err
       
   def ThreadRecv(self):
     print "ThreadRecv Starts\n"
