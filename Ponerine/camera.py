@@ -208,7 +208,7 @@ class Camera():
       self.RecvMsg()
 
   def Connect(self):
-    socket.setdefaulttimeout(5)
+    socket.setdefaulttimeout(10)
     #create socket
     self.srv = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     self.srv.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
@@ -240,5 +240,11 @@ class Camera():
   def StopRecord(self):
     self.SendMsg('{"msg_id":514}')
 
-  def CamReboot(self):
+  def FormatCard(self):
     self.SendMsg('{"msg_id":4}')
+
+  def Reboot(self):
+    self.SendMsg('{"msg_id":2,"type":"dev_reboot","param":"on"}')
+
+  def RestoreFactory(self):
+    self.SendMsg('{"msg_id":2,"type":"restore_factory_settings","param":"on"}')
