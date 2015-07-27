@@ -1,0 +1,32 @@
+#:kivy 1.0
+#:import kivy kivy
+#:import Factory kivy.factory.Factory
+
+<ImageButton@Button>
+  source: None
+  Image:
+    source: root.source
+    pos: root.pos
+    size: root.size
+    
+<ConnectScreen>:
+  BoxLayout:
+    Button:
+      #source: 'image/presplash.png'
+      #background_normal: 'image/onnormal.png'
+      #background_down: 'image/onpress.png'
+      border: (30,30,30,30)
+      text: 'Connect Screen'
+      on_release: root.manager.Control()
+
+<ControlScreen>:
+  BoxLayout:
+    Button:
+      text: 'Control Screen'
+      on_release: root.manager.Setting()
+
+<SettingScreen>:
+  BoxLayout:
+    Button:
+      text: 'Setting Screen'
+      on_release: root.manager.Connect()
