@@ -1,3 +1,6 @@
+Andy_S test.apk
+http://sw.deltaflyer.cz/test.apk
+
 XiaoYi Sports Camera Json Format Remarks
 
 Send Data:
