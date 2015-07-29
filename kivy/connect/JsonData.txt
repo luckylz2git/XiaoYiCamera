@@ -1,3 +1,6 @@
+event-system-in-python
+http://stackoverflow.com/questions/1092531/event-system-in-python/
+http://kivy.org/docs/api-kivy.event.html
 Andy_S test.apk
 http://sw.deltaflyer.cz/test.apk
 
