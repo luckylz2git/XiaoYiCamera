@@ -1,0 +1,99 @@
+#:kivy 1.8.0
+#:import KivyLexer kivy.extras.highlight.KivyLexer
+#:import Factory kivy.factory.Factory
+
+<CCScreen>:
+	ScrollView:
+		do_scroll_x: False
+		do_scroll_y: False if root.fullscreen else (content.height > root.height - dp(16))
+		AnchorLayout:
+			size_hint_y: None
+			height: root.height if root.fullscreen else max(root.height, content.height)
+			GridLayout:
+				id: content
+				cols: 1
+				spacing: '8dp'
+				padding: '8dp'
+				size_hint: (1, 1) if root.fullscreen else (.8, None)
+				height: self.height if root.fullscreen else self.minimum_height
+
+BoxLayout:
+	orientation: 'vertical'
+
+	canvas.before:
+		Color:
+			rgb: .6, .6, .6
+
+	ActionBar:
+		id: av
+		size_hint: 1, None
+		height: 40
+		
+		ActionView:
+			use_separator: True
+			ActionPrevious:
+				with_previous: False
+				app_icon: "Data\\Images\\XiaoYi.png"
+				title: self.title + ('' if not app.current_title else ' - {}'.format(app.current_title))
+				on_release: app.go_hierarchy_previous()
+
+			ActionOverflow:
+			ActionGroup:
+				text: 'Camera'
+				id: MenuCamera
+				ActionButton:
+					text: 'Info'
+					on_release: app.AppPopupDonate()
+				ActionButton:
+					text: 'Format'
+					on_release: app.AppPopupAbout()
+				ActionButton:
+					text: 'Reboot'
+					on_release: app.AppPopupAbout()
+				ActionButton:
+					text: 'Factory settings'
+					on_release: app.AppPopupAbout()
+			ActionGroup:
+				text: 'Expert'
+				id: MenuExpert
+				ActionButton:
+					text: 'Enable expert menu'
+					size_hint: None, None
+					width: '25dp'
+					on_release: app.AppPopupDonate()
+				ActionButton:
+					text: 'Show all camera variables'
+					on_release: app.AppPopupDonate()
+					disabled: True
+				ActionButton:
+					text: 'Enable Telnet access'
+					on_release: app.AppPopupAbout()
+					disabled: True
+				ActionGroup:
+					text: 'File transfer chunk size'
+					on_release: app.AppPopupAbout()
+					ActionButton:
+						text: '8kB'
+						on_release: app.AppPopupAbout()
+			ActionButton:
+				text: 'Config'
+				size_hint_x: None
+				width: 300
+				important: True
+				on_release: app.AppPopupConnConfig()
+			ActionGroup:
+				text: 'Help'
+				ActionButton:
+					text: 'Donate'
+					on_release: app.AppPopupDonate()
+				ActionButton:
+					text: 'About'
+					on_release: app.AppPopupAbout()
+
+
+	ScreenManager:
+		id: sm
+		on_current_screen:
+			idx = app.screen_names.index(args[1].name)
+			if idx > -1: app.hierarchy.append(idx)
+

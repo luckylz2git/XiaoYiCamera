@@ -1,0 +1,19 @@
+CamConn >callback must be a callable, got None<
+CamConn >[Errno 10061] Nemohlo být vytvoøeno žádné pøipojení, protože cílový poèítaè je aktivnì odmítl<
+ToSend >{"msg_id":3}<
+CamConn >('Connection', 'failed')<
+CamConn >('Connection', 'failed')<
+CamConn >('Connection', 'failed')<
+CamConn >('Connection', 'failed')<
+CamConn >('Connection', 'failed')<
+CamConn >('Connection', 'failed')<
+CamConn >('Connection', 'failed')<
+CamConn >('Connection', 'failed')<
+CamConn >('Connection', 'failed')<
+CamConn >('Connection', 'failed')<
+CamConn >('Connection', 'failed')<
+CamConn >('Connection', 'failed')<
+CamConn >('Connection', 'failed')<
+CamConn >('Connection', 'failed')<
+CamConn >('Connection', 'failed')<
+CamConn >('Connection', 'failed')<

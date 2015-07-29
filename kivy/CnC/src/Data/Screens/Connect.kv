@@ -1,0 +1,34 @@
+CCScreen:
+	name: 'Connect'
+	fullscreen: True 
+	FloatLayout:
+		id: content 
+		size_hint: 1, 1
+		Button:
+			id: ConnButton
+			size_hint: None, None
+			size: 191, 191
+			center: content.center_x, content.center_y
+			background_color: 0,0,0,0
+			on_release: app.Internal_Connect()
+			canvas:
+				Color:
+					rgba: .02734375, .55078125, .5234375, 1
+				Ellipse:
+					pos: self.center_x-90, self.center_y-90
+					size: 180, 180
+					segments: 360
+				Color:
+					rgba: app.ConnColor
+				Line:
+					circle: self.center_x, self.center_y, 90, 0, 360, 360
+					width: 6
+				Color:
+					rgba: .01, .4, .4, 1
+				Line:
+					circle: self.center_x, self.center_y, 40, 20, 340, 360
+					width: 5
+				Line:	
+					points: self.center_x, self.center_y+25, self.center_x, self.center_y+45
+					width: 5
+ 

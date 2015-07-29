@@ -1,0 +1,25 @@
+BoxLayout:
+	id: NewVersion 
+	orientation: 'vertical'
+	spacing: 5
+
+	Widget:
+	Label:
+		text: 'New version was found.\n\nYour version: %s\nNew version: %s' %(app.Version, app.NewVersion)
+	Widget:
+	BoxLayout:
+		orientation: 'horizontal'
+		size_hint: 1, None
+		height: 30
+		Button:
+			text: 'Update'
+			size_hint: None, None
+			size: 70, 30
+			on_release: app.Internal_UpdateGo()
+		Widget:
+		Button:
+			text: 'Close'
+			size_hint: None, None
+			size: 70, 30
+			on_release: app.Internal_UpdateClose()
+			

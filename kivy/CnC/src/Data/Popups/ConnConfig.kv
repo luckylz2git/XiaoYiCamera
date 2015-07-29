@@ -1,0 +1,156 @@
+BoxLayout:
+	id: ConnConfig 
+	orientation: 'vertical'
+	spacing: 5
+
+	Widget:
+	BoxLayout:
+		orientation: 'horizontal'
+		size_hint: 1, None
+		height: 30
+		Label:
+			text: 'Autoconnect:'
+			size_hint: None, 1
+			width: 160
+			text_size: self.size
+			halign: 'right'
+			valign: 'middle'
+			padding_x: 10
+		Switch:
+			id: CamAuto
+			active: app.CamAuto
+			size_hint: None, 1
+			width: 85
+
+	BoxLayout:
+		orientation: 'horizontal'
+		size_hint: 1, None
+		height: 30
+		Label:
+			text: 'Debug mode:'
+			size_hint: None, 1
+			width: 160
+			text_size: self.size
+			halign: 'right'
+			valign: 'middle'
+			padding_x: 10
+		Switch:
+			id: DebugMode
+			active: app.DebugMode
+			size_hint: None, 1
+			width: 85
+
+	BoxLayout:
+		orientation: 'horizontal'
+		size_hint: 1, None
+		height: 30
+		Label:
+			text: 'Camera IP:'
+			size_hint: None, 1
+			width: 160
+			text_size: self.size
+			halign: 'right'
+			valign: 'middle'
+			padding_x: 10
+		TextInput:
+			id: CamAddr
+			text: app.CamAddr
+			size_hint: None, 1
+			width: 150
+
+	BoxLayout:
+		orientation: 'horizontal'
+		size_hint: 1, None
+		height: 30
+		padding_y: 10
+		Label:
+			text: 'Camera JSON port:'
+			size_hint: None, 1
+			width: 160
+			text_size: self.size
+			halign: 'right'
+			valign: 'middle'
+			padding_x: 10
+		TextInput:
+			id: CamPort
+			text: "%i" %app.CamPort
+			size_hint: None, 1
+			width: 50
+
+	BoxLayout:
+		orientation: 'horizontal'
+		size_hint: 1, None
+		height: 30
+		Label:
+			text: 'Camera DATA port:'
+			size_hint: None, 1
+			width: 160
+			text_size: self.size
+			halign: 'right'
+			valign: 'middle'
+			padding_x: 10
+		TextInput:
+			id: CamDataPort
+			text: "%i" %app.CamDataPort
+			size_hint: None, 1
+			width: 50
+
+	BoxLayout:
+		orientation: 'horizontal'
+		size_hint: 1, None
+		height: 30
+		Label:
+			text: 'Camera WEB port:'
+			size_hint: None, 1
+			width: 160
+			text_size: self.size
+			halign: 'right'
+			valign: 'middle'
+			padding_x: 10
+		TextInput:
+			id: CamWebPort
+			text: "%i" %app.CamWebPort
+			size_hint: None, 1
+			width: 50
+
+	BoxLayout:
+		orientation: 'horizontal'
+		size_hint: 1, None
+		height: 30
+		Label:
+			text: 'Custom VLC Path:'
+			size_hint: None, 1
+			width: 160
+			text_size: self.size
+			halign: 'right'
+			valign: 'middle'
+			padding_x: 10
+		TextInput:
+			id: CustomVlcPath
+			text: app.CustomVlcPath
+			size_hint: None, 1
+			width: 200
+	Widget
+	BoxLayout:
+		orientation: 'horizontal'
+		size_hint: 1, None
+		height: 30
+		Label:
+			text: ". = default VLC path"
+			size_hint: None, 1
+			width: 160
+			text_size: self.size
+			halign: 'right'
+			valign: 'top'
+			padding_x: 10
+		Widget
+		Button:
+			text: 'Apply & Close'
+			size_hint: None, None
+			size: 100, 30
+			on_release: app.AppPopupConnConfig_Apply(CamAuto.active, DebugMode.active, CamAddr.text, CamPort.text, CamDataPort.text, CamWebPort.text, CustomVlcPath.text)
+		Widget:
+			size_hint: None, None
+			size: 16, 30
+			
+	Widget:

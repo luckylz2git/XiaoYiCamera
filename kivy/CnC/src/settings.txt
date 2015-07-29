@@ -1,0 +1,1 @@
+{"CamWebPort": 9080, "CamAuto": false, "CamAddr": "192.168.101.2", "CustomVlcPath": ".", "DebugMode": true, "CamDataPort": 9087, "CamPort": 9078}

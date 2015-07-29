@@ -1,0 +1,23 @@
+BoxLayout:
+	id: ConnError 
+	orientation: 'vertical'
+	spacing: 5
+
+	Widget:
+	Label:
+		text: "C&C couldn't connect to your camera.\n\nPlease make sure that your WiFi\nis connected to the camera.\n\nYou can also review the Config page."
+	Widget:
+	BoxLayout:
+		orientation: 'horizontal'
+		size_hint: 1, None
+		height: 30
+		Widget
+		Button:
+			text: 'Close'
+			size_hint: None, None
+			size: 100, 30
+			on_release: app.Popup_ConnError.dismiss()
+		Widget:
+			size_hint: None, None
+			size: 16, 30
+			

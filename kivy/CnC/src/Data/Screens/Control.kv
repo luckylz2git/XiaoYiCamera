@@ -1,0 +1,196 @@
+CCScreen:
+	name: 'Control'
+	fullscreen: True 
+	FloatLayout:
+		id: content 
+		size_hint: 1, 1
+		Button:
+			id: Record
+			size_hint: None, None
+			size: 80, 80
+			pos: 10, content.height-70
+			background_color: 1,0,0,1
+			canvas:
+				Color:
+					rgba: .6, .6, .6, 1
+				Ellipse:
+					pos: self.x, self.y
+					size: 80, 80
+					segments: 360
+				Color:
+					rgba: 1, 0, 0, 1
+				Ellipse:
+					pos: self.x+25, self.y+25
+					size: 30, 30
+					segments: 360
+
+		Button:
+			id: SinglePhoto
+			size_hint: None, None
+			size: 80, 80
+			pos: 10, content.height-170
+			background_color: 1,0,0,1
+			canvas:
+				Color:
+					rgba: .6, .6, .6, 1
+				Ellipse:
+					pos: self.x, self.y
+					size: 80, 80
+				Color:
+					rgba: 0, 0, 0, 1
+				Rectangle:
+					pos: self.center_x-17, self.center_y-3
+					size: 35, 25
+				Rectangle:
+					pos: self.center_x-8, self.center_y+22
+					size: 15, 6
+				Rectangle:
+					pos: self.center_x-14, self.center_y+22
+					size: 4,1
+				Color:
+					rgba: .6, .6, .6, 1
+				Rectangle:
+					pos: self.center_x+8, self.center_y+18
+					size: 8, 3
+				Line:
+					circle: self.center_x, self.center_y+9, 8
+					width: 1.2
+			Label:
+				text: 'Single'
+				center: SinglePhoto.center_x, SinglePhoto.center_y-15
+				color: 0,0,0,1
+				size_hint: None, None
+				size: 80, 10
+
+		Button:
+			id: DelayedPhoto
+			size_hint: None, None
+			size: 80, 80
+			pos: 110, content.height-170
+			background_color: 1,0,0,1
+			canvas:
+				Color:
+					rgba: .6, .6, .6, 1
+				Ellipse:
+					pos: self.x, self.y
+					size: 80, 80
+				Color:
+					rgba: 0, 0, 0, 1
+				Rectangle:
+					pos: self.center_x-17, self.center_y-3
+					size: 35, 25
+				Rectangle:
+					pos: self.center_x-8, self.center_y+22
+					size: 15, 6
+				Rectangle:
+					pos: self.center_x-14, self.center_y+22
+					size: 4,1
+				Color:
+					rgba: .6, .6, .6, 1
+				Rectangle:
+					pos: self.center_x+8, self.center_y+18
+					size: 8, 3
+				Line:
+					circle: self.center_x, self.center_y+9, 8
+					width: 1.2
+			Label:
+				text: 'Delayed'
+				center: DelayedPhoto.center_x, DelayedPhoto.center_y-15
+				color: 0,0,0,1
+				size_hint: None, None
+				size: 80, 10
+
+		Button:
+			id: BurstPhoto
+			size_hint: None, None
+			size: 80, 80
+			pos: 210, content.height-170
+			background_color: 1,0,0,1
+			canvas:
+				Color:
+					rgba: .6, .6, .6, 1
+				Ellipse:
+					pos: self.x, self.y
+					size: 80, 80
+				Color:
+					rgba: 0, 0, 0, 1
+				Rectangle:
+					pos: self.center_x-17, self.center_y-3
+					size: 35, 25
+				Rectangle:
+					pos: self.center_x-8, self.center_y+22
+					size: 15, 6
+				Rectangle:
+					pos: self.center_x-14, self.center_y+22
+					size: 4,1
+				Color:
+					rgba: .6, .6, .6, 1
+				Rectangle:
+					pos: self.center_x+8, self.center_y+18
+					size: 8, 3
+				Line:
+					circle: self.center_x, self.center_y+9, 8
+					width: 1.2
+			Label:
+				text: 'Burst'
+				center: BurstPhoto.center_x, BurstPhoto.center_y-15
+				color: 0,0,0,1
+				size_hint: None, None
+				size: 80, 10
+
+		Button:
+			id: LapsePhoto
+			size_hint: None, None
+			size: 80, 80
+			pos: 310, content.height-170
+			background_color: 1,0,0,1
+			canvas:
+				Color:
+					rgba: .6, .6, .6, 1
+				Ellipse:
+					pos: self.x, self.y
+					size: 80, 80
+				Color:
+					rgba: 0, 1, 0, 1
+				Rectangle:
+					pos: self.center_x-17, self.center_y-3
+					size: 35, 25
+				Rectangle:
+					pos: self.center_x-8, self.center_y+22
+					size: 15, 6
+				Rectangle:
+					pos: self.center_x-14, self.center_y+22
+					size: 4,1
+				Color:
+					rgba: .6, .6, .6, 1
+				Rectangle:
+					pos: self.center_x+8, self.center_y+18
+					size: 8, 3
+				Line:
+					circle: self.center_x, self.center_y+9, 8
+					width: 1.2
+			Label:
+				text: 'Timelapse'
+				center: LapsePhoto.center_x, LapsePhoto.center_y-15
+				color: 0,0,0,1
+				size_hint: None, None
+				size: 80, 10
+
+		Button:
+			id: LiveView
+			size_hint: None, None
+			size: 80, 80
+			pos: 10, content.height-270
+			background_color: 1,0,0,1
+			canvas:
+				Color:
+					rgba: .6, .6, .6, 1
+				Ellipse:
+					pos: self.x, self.y
+					size: 80, 80
+			Label:
+				text: 'Live View'
+				center: LiveView.center_x, LiveView.center_y-15
+				color: 0,0,0,1
+				size_hint: None, None
+				size: 80, 10
