@@ -1,3 +1,6 @@
+rtsp:
+http://stackoverflow.com/questions/15837390/vlc-rtsp-live-stream-to-android
+
 event-system-in-python
 http://stackoverflow.com/questions/1092531/event-system-in-python/
 http://kivy.org/docs/api-kivy.event.html
