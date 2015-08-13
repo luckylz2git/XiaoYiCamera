@@ -12,6 +12,7 @@ install_no_password.ash
              apmode.ash
             stamode.ash
           ipaddress.txt
+              shell.sh
                ssid.txt
    ssid_no_password.txt
 ```
