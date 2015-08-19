@@ -29,6 +29,13 @@ writew 0xC0396E64 0x2004
 # write fw version(1.2.6) sub number(6->7)
 writeb 0xC02DD3D8 0x37
 
+# timelapse video resolution hack address (fw 1.2.10)
+# timelapse video resolution 1296p
+writeb 0xC06CE4D9 0x02
+# bitrate address the same
+# bitrate 35Mbps
+writew 0xC05C3016 0x420C
+
 # =====================
 # Test Failure Commands
 # =====================
