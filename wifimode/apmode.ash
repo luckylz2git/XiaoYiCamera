@@ -6,14 +6,17 @@ sleep 1
 # video resolution 1296p
 writeb 0xC06CE446 0x02
 sleep 1
+# timelapse video resolution 1296p
+writeb 0xC06CE4D9 0x02
+sleep 1
 # bitrate 35Mbps
 writew 0xC05C3016 0x420C
 sleep 1
 # photo RAW+jpg
 t app test debug_dump 14
 sleep 1
-t pwm 1 set_level 120
-sleep 1
+# t pwm 1 set_level 120
+# sleep 1
 t pwm 1 enable
 sleep 1
 t pwm 1 disable

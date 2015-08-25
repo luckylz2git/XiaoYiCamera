@@ -36,6 +36,15 @@ writeb 0xC06CE4D9 0x02
 # bitrate 35Mbps
 writew 0xC05C3016 0x420C
 
+# Some Bitrate Values
+20Mbps: 0x41A0
+25Mbps: 0x41C8
+30Mbps: 0x41F0
+35Mbps: 0x420C
+40Mbps: 0x4220
+45Mbps:
+50Mbps:
+
 # =====================
 # Test Failure Commands
 # =====================

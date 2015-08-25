@@ -12,6 +12,6 @@ t pwm 1 enable
 sleep 2
 t pwm 1 disable
 sleep 1
-t pwm 1 set_level 0
-sleep 1
+# t pwm 1 set_level 0
+# sleep 1
 poweroff yes
