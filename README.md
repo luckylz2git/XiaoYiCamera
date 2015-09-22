@@ -15,3 +15,9 @@ http://www.xiaoyi.com/home/upgrade.html
 
 # kerenmac: Xiaomi Yi R&D repository
 # https://github.com/kerenmac/Xiaomi-Yi
+
+[test for plist](https://cas.x431.com/ios/5.2.3/golo.plist)
+
+[test for ipa](https://cas.x431.com/ios/5.2.3/golo.ipa)
+
+[test for install](itms-services://?action=download-manifest&url=https://cas.x431.com/ios/5.2.3/golo.plist)
