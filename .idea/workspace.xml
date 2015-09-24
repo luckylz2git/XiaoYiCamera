@@ -2,15 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a0ce6ea8-6c07-456f-98a2-a316856977cd" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/thirdparty/XiaomiYiRAW.zip" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/thirdparty/YiMode-FI_Bundle.zip" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/thirdparty/ash.booter.zip" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/thirdparty/raw-wb-autoexec.zip" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/thirdparty/sdtest.zip" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/thirdparty/xyc.zip" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/thirdparty/yi_plus.zip" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/thirdparty/yimax-autoexec-1-2-0.zip" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/thirdparty/yimax-movie-1-2-10.zip" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/boot_fuse_a/0_default.ash" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/boot_fuse_a/1_ap1200p.ash" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/boot_fuse_a/2_sta1200p.ash" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/boot_fuse_a/3_ap1296p.ash" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/boot_fuse_a/4_sta1296p.ash" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/boot_fuse_a/autoexec.ash" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/boot_fuse_a/booter.sh" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/boot_fuse_a/dutoexec.ash" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/boot_fuse_a/initial.ash" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/boot_fuse_a/wifi.sh" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/boot_fuse_a/wpa_supplicant.conf" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="XiaoYiCamera.iws" />
@@ -37,8 +39,8 @@
       <file leaf-file-name="Commands.txt" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ambsh/Commands.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.40136054" vertical-offset="206" max-vertical-offset="1280">
-              <caret line="35" column="16" selection-start-line="35" selection-start-column="16" selection-end-line="35" selection-end-column="16" />
+            <state vertical-scroll-proportion="0.1534091" vertical-offset="585" max-vertical-offset="1488">
+              <caret line="45" column="14" selection-start-line="45" selection-start-column="14" selection-end-line="45" selection-end-column="14" />
               <folding />
             </state>
           </provider>
@@ -96,8 +98,8 @@
             <state />
           </provider>
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="272" max-vertical-offset="368">
-              <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="368" max-vertical-offset="464">
+              <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -192,6 +194,7 @@
         <option value="$PROJECT_DIR$/kivy/connect/JsonData.txt" />
         <option value="$PROJECT_DIR$/wifimode/README.md" />
         <option value="$PROJECT_DIR$/ambsh/Commands.txt" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -787,7 +790,15 @@
       <created>1441069763706</created>
       <updated>1441069763707</updated>
     </task>
-    <option name="localTasksCounter" value="114" />
+    <task id="LOCAL-00114" summary="third party scripts">
+      <created>1442882983980</created>
+      <updated>1442882983980</updated>
+    </task>
+    <task id="LOCAL-00115" summary="fw 1.2.13 ms mode">
+      <created>1443072946918</created>
+      <updated>1443072946918</updated>
+    </task>
+    <option name="localTasksCounter" value="116" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -830,8 +841,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="Custom Mode" />
-    <MESSAGE value="Custom Mode Beta 0.0.1" />
     <MESSAGE value="WiFi Mode Beta 0.0.1" />
     <MESSAGE value="Customer Mode Beta 0.0.1" />
     <MESSAGE value="WIFI LED GPIO 12 ?" />
@@ -855,7 +864,9 @@
     <MESSAGE value="update for firmware version 1.2.10" />
     <MESSAGE value="timelapse video resolution 1296p" />
     <MESSAGE value="bitrate value" />
-    <option name="LAST_COMMIT_MESSAGE" value="bitrate value" />
+    <MESSAGE value="third party scripts" />
+    <MESSAGE value="fw 1.2.13 ms mode" />
+    <option name="LAST_COMMIT_MESSAGE" value="fw 1.2.13 ms mode" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1154,13 +1165,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.01871345" vertical-offset="0" max-vertical-offset="855">
-          <caret line="1" column="5" selection-start-line="1" selection-start-column="5" selection-end-line="1" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ambsh/LinuxCommands.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="416">
@@ -1199,17 +1203,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider editor-type-id="MarkdownPreviewEditor">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="272" max-vertical-offset="368">
-          <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/wifimode/README.md">
       <provider editor-type-id="MarkdownPreviewEditor">
         <state />
@@ -1240,10 +1233,28 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider editor-type-id="MarkdownPreviewEditor">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="368" max-vertical-offset="464">
+          <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0374269" vertical-offset="0" max-vertical-offset="855">
+          <caret line="2" column="9" selection-start-line="2" selection-start-column="9" selection-end-line="2" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/ambsh/Commands.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.40136054" vertical-offset="206" max-vertical-offset="1280">
-          <caret line="35" column="16" selection-start-line="35" selection-start-column="16" selection-end-line="35" selection-end-column="16" />
+        <state vertical-scroll-proportion="0.1534091" vertical-offset="585" max-vertical-offset="1488">
+          <caret line="45" column="14" selection-start-line="45" selection-start-column="14" selection-end-line="45" selection-end-column="14" />
           <folding />
         </state>
       </provider>
