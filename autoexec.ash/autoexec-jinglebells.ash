@@ -1,6 +1,9 @@
 sleep 1
-#change to ms mode
-writew 0xC0155712 0x0000
+#change to ms mode fw 1.0.12
+#writew 0xC0155712 0x0000
+
+#change to ms mode fw 1.2.12
+writew 0xC0176CCE 0x0000
 sleep 1
 
 #Jingle Bells
@@ -526,5 +529,7 @@ t pwm 1 disable
 sleep 500
 
 t pwm 1 set_level 0
-sleep 2000
+#change back to sec mode fw 1.2.12
+writew 0xC0176CCE 0x4358
+sleep 2
 poweroff yes

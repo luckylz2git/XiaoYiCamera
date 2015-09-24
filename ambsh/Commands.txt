@@ -48,6 +48,19 @@ writew 0xC05C3016 0x420C
 55Mbps: 0x425C
 60Mbps: 0x4270
 
+# sleep (s) & usleep (ms)
+search PRI.a7s string: Usage: %s [sec]
+find string XC before this address, hex value: 58 43
+# fw 1.2.13
+writew 0xC0176C5A 0x0000 #ms mode
+writew 0xC0176C5A 0x4358 #sec mode
+# fw 1.2.12
+writew 0xC0176CCE 0x0000 #ms mode
+writew 0xC0176CCE 0x4358 #sec mode
+# fw 1.0.12
+writew 0xC0155712 0x0000 #ms mode
+writew 0xC0155712 0x4358 #sec mode
+
 # =====================
 # Test Failure Commands
 # =====================
