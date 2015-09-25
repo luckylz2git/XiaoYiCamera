@@ -24,8 +24,21 @@ readw 0xC0396E64 > d:/307A.txt
 readb 0xC02DD3D8 > d:/version6.txt
 
 # write value to address, writeb(1-byte), writew(2-bytes), writel(4-bytes)
+
+# search A0 33 7A in PRI.a7s get address of 30 7A
+
+# 0xC0100000
+# 0x00296E64
+# 0xC0396E64
+
 # set file size limit to 4GB
+# fw 1.2.6
 writew 0xC0396E64 0x2004
+# fw 1.2.12
+writew 0xC03A8620 0x2004
+# fw 1.2.13
+writew 0xC03A8520 0x2004
+
 # write fw version(1.2.6) sub number(6->7)
 writeb 0xC02DD3D8 0x37
 

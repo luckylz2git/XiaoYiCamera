@@ -2,17 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a0ce6ea8-6c07-456f-98a2-a316856977cd" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/boot_fuse_a/0_default.ash" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/boot_fuse_a/1_ap1200p.ash" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/boot_fuse_a/2_sta1200p.ash" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/boot_fuse_a/3_ap1296p.ash" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/boot_fuse_a/4_sta1296p.ash" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/boot_fuse_a/autoexec.ash" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/boot_fuse_a/booter.sh" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/boot_fuse_a/dutoexec.ash" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/boot_fuse_a/initial.ash" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/boot_fuse_a/wifi.sh" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/boot_fuse_a/wpa_supplicant.conf" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ambsh/Commands.txt" afterPath="$PROJECT_DIR$/ambsh/Commands.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="XiaoYiCamera.iws" />
@@ -39,8 +29,8 @@
       <file leaf-file-name="Commands.txt" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ambsh/Commands.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.1534091" vertical-offset="585" max-vertical-offset="1488">
-              <caret line="45" column="14" selection-start-line="45" selection-start-column="14" selection-end-line="45" selection-end-column="14" />
+            <state vertical-scroll-proportion="0.15306123" vertical-offset="777" max-vertical-offset="1696">
+              <caret line="57" column="14" selection-start-line="57" selection-start-column="14" selection-end-line="57" selection-end-column="14" />
               <folding />
             </state>
           </provider>
@@ -193,8 +183,8 @@
         <option value="$PROJECT_DIR$/kivy/connect/ponerine(07-19).py" />
         <option value="$PROJECT_DIR$/kivy/connect/JsonData.txt" />
         <option value="$PROJECT_DIR$/wifimode/README.md" />
-        <option value="$PROJECT_DIR$/ambsh/Commands.txt" />
         <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/ambsh/Commands.txt" />
       </list>
     </option>
   </component>
@@ -230,7 +220,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -259,12 +248,13 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="thirdparty" />
+              <option name="myItemId" value="ambsh" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -285,6 +275,14 @@
     </key>
   </component>
   <component name="RunManager">
+    <configuration default="true" type="DartUnitRunConfigurationType" factoryName="DartUnit">
+      <option name="VMOptions" />
+      <option name="arguments" />
+      <option name="filePath" />
+      <option name="scope" value="ALL" />
+      <option name="testName" />
+      <method />
+    </configuration>
     <configuration default="true" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application">
       <option name="VMOptions" />
       <option name="arguments" />
@@ -295,12 +293,14 @@
       <option name="showConsoleOnStdOut" value="false" />
       <method />
     </configuration>
-    <configuration default="true" type="DartUnitRunConfigurationType" factoryName="DartUnit">
-      <option name="VMOptions" />
-      <option name="arguments" />
+    <configuration default="true" type="CucumberJavaScriptRunConfigurationType" factoryName="Cucumber.js">
+      <option name="cucumberJsArguments" />
+      <option name="executablePath" />
       <option name="filePath" />
-      <option name="scope" value="ALL" />
-      <option name="testName" />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerKarma" factoryName="Karma" config-file="">
+      <envs />
       <method />
     </configuration>
     <configuration default="true" type="JSTestDriver:ConfigurationType" factoryName="JsTestDriver">
@@ -308,16 +308,6 @@
       <setting name="settingsFile" value="" />
       <setting name="serverType" value="INTERNAL" />
       <setting name="preferredDebugBrowser" value="Chrome" />
-      <method />
-    </configuration>
-    <configuration default="true" type="JavaScriptTestRunnerKarma" factoryName="Karma" config-file="">
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="true" type="CucumberJavaScriptRunConfigurationType" factoryName="Cucumber.js">
-      <option name="cucumberJsArguments" />
-      <option name="executablePath" />
-      <option name="filePath" />
       <method />
     </configuration>
     <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
@@ -798,7 +788,11 @@
       <created>1443072946918</created>
       <updated>1443072946918</updated>
     </task>
-    <option name="localTasksCounter" value="116" />
+    <task id="LOCAL-00116" summary="boot from fuse_a">
+      <created>1443073123874</created>
+      <updated>1443073123874</updated>
+    </task>
+    <option name="localTasksCounter" value="117" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -817,12 +811,12 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32745314" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32855567" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -841,7 +835,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="WiFi Mode Beta 0.0.1" />
     <MESSAGE value="Customer Mode Beta 0.0.1" />
     <MESSAGE value="WIFI LED GPIO 12 ?" />
     <MESSAGE value="WiFi Mode beta 0.0.1" />
@@ -866,7 +859,8 @@
     <MESSAGE value="bitrate value" />
     <MESSAGE value="third party scripts" />
     <MESSAGE value="fw 1.2.13 ms mode" />
-    <option name="LAST_COMMIT_MESSAGE" value="fw 1.2.13 ms mode" />
+    <MESSAGE value="boot from fuse_a" />
+    <option name="LAST_COMMIT_MESSAGE" value="boot from fuse_a" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1253,8 +1247,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ambsh/Commands.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.1534091" vertical-offset="585" max-vertical-offset="1488">
-          <caret line="45" column="14" selection-start-line="45" selection-start-column="14" selection-end-line="45" selection-end-column="14" />
+        <state vertical-scroll-proportion="0.15306123" vertical-offset="777" max-vertical-offset="1696">
+          <caret line="57" column="14" selection-start-line="57" selection-start-column="14" selection-end-line="57" selection-end-column="14" />
           <folding />
         </state>
       </provider>
