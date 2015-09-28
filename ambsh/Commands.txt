@@ -74,6 +74,12 @@ writew 0xC0176CCE 0x4358 #sec mode
 writew 0xC0155712 0x0000 #ms mode
 writew 0xC0155712 0x4358 #sec mode
 
+# lock video exp
+t ia2 -exp lock [en]
+    en=[0|1], 0:disabl, 1:enable
+
+t ia2 -ae [on|off] turn on/off AE
+
 # =====================
 # Test Failure Commands
 # =====================
