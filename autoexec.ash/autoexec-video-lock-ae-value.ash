@@ -7,3 +7,8 @@ t ia2 -ae off
 # [A/S/I/D]=192,1012,0,4096 1/30s
 # AGC: min 192 to max ???
 # DGAIN: min ??? to max 8192
+
+# enabled exp debug
+# t ia2 -exp info <<< no use ???
+# 1st: send {"msg_id":2,"type":"save_log", "param":"on"}
+t ia2 -exp debug 1
