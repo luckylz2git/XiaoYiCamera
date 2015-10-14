@@ -1,0 +1,26 @@
+<script type="text/JavaScript">
+<!--
+var newImage = new Image();
+newImage.src = "./amba.jpg?ts=1";
+num = 1;
+
+function reloadImage()
+{
+	if(newImage.complete) {
+		document.viewfinder.src = newImage.src;
+		newImage = new Image();
+		newImage.src = "./amba.jpg?ts=" + new Date().getTime();
+	}
+	
+	setTimeout(reloadImage, 66);
+}
+
+-->
+</script>
+<html>
+  <head>
+  </head>
+  <body onload="JavaScript:reloadImage()">
+	<img src="./amba.jpg?ts=0" name="viewfinder" />
+</body>
+</html>

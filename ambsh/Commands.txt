@@ -80,6 +80,35 @@ t ia2 -exp lock [en]
 
 t ia2 -ae [on|off] turn on/off AE
 
+# export all ash command
+help > d:/help.txt
+# result:
+supported built-in commands:
+	addr2func	bp		cardmgr		cat	
+	cd		chmod		config		cp	
+	cpu		date		deletedir	dmesg	
+	dramcfg		drives		dsputil		echo	
+	eeprom		eval		false		ffuc	
+	format		hal		help		history	
+	hotboot		ioerr		jobs		kill	
+	ls		md5		mesg		mkboot	
+	mkdir		morph		mv		flashdb	
+	nice		poweroff	pref		ps	
+	pwd		ramdisk		readb		readl	
+	readw		reboot		reset		resume	
+	rm		rmdir		savebin		sleep	
+	suspend		sysmon		t		test	
+	time		touch		trap		true	
+	vol		writeb		writel		writew	
+	yyinfo		usbclass	ver		vin	
+	sm		corefreq	dramfreq	idspfreq
+	dll		cleandir	volcfg		firmfl	
+	nvd		nftl		bbt		romfs	
+	lu_example_util	lk_example_util	wifi		net	
+	lu_util		lk_util		ipclog		ipctest	
+	ipcmutex	ipcslock	ipcstat		ipcprog	
+	ipcirq		boss	
+
 # =====================
 # Test Failure Commands
 # =====================
