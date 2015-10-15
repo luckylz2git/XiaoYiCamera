@@ -6,7 +6,7 @@ t ia2 -ae off
 # [A/S/I/D]=192,1140,0,8192 1/60s
 # [A/S/I/D]=192,1012,0,4096 1/30s
 # AGC: min 192 to max ???
-# DGAIN: min ??? to max 8192
+# DGAIN: min 4096 to max 8192
 
 # enabled exp debug
 # t ia2 -exp info <<< no use ???
