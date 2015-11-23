@@ -18,9 +18,9 @@
         <key>metadata</key>
         <dict>
           <key>bundle-identifier</key>
-          <string>cn.luckylz.three</string>
+          <string>org.kivy.three</string>
           <key>bundle-version</key>
-          <string>0.0.1</string>
+          <string>1.1</string>
           <key>kind</key>
           <string>software</string>
           <key>title</key>

@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a0ce6ea8-6c07-456f-98a2-a316856977cd" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kivy/three/three.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kivy/three/three.plist" afterPath="$PROJECT_DIR$/kivy/three/three.plist" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="XiaoYiCamera.iws" />
@@ -860,7 +860,11 @@
       <created>1448246610346</created>
       <updated>1448246610346</updated>
     </task>
-    <option name="localTasksCounter" value="127" />
+    <task id="LOCAL-00127" summary="three test">
+      <created>1448246788554</created>
+      <updated>1448246788554</updated>
+    </task>
+    <option name="localTasksCounter" value="128" />
     <servers />
   </component>
   <component name="ToolWindowManager">
