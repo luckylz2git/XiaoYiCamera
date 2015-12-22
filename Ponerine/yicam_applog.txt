@@ -1,0 +1,616 @@
+nc -zv 192.168.42.1 1-10000 2>&1 | grep succeeded > port.txt
+
+Connection to 192.168.42.1 53 port [tcp/domain] succeeded!
+Connection to 192.168.42.1 80 port [tcp/http] succeeded!
+Connection to 192.168.42.1 554 port [tcp/rtsp] succeeded!
+Connection to 192.168.42.1 7878 port [tcp/*] succeeded!
+Connection to 192.168.42.1 8787 port [tcp/*] succeeded!
+
+monitor port 7878 & 8787
+
+================================ RESTART ================================
+APP-SEND>>> {"token":0,"msg_id":257}
+CAM-RECV<<< { "msg_id": 7, "type": "vf_stop" }
+CAM-RECV<<< { "rval": 0, "msg_id": 257, "param": 2 }
+APP-SEND>>> {"token":2,"msg_id":3}
+CAM-RECV<<< { "rval": 0, "msg_id": 3, "param": [ { "camera_clock": "2015-09-24 10:18:00" }, { "video_standard": "NTSC" }, { "app_status": "idle" }, { "video_resolution": "1600x1200 60P 4:3" }, { "video_stamp": "off" }, { "video_quality": "S.Fine" }, { "timelapse_video": "0.5" }, { "capture_mode": "precise quality" }, { "photo_size": "16M (4608x3456 4:3)" }, { "photo_stamp": "off" }, { "photo_quality": "S.Fine" }, { "timelapse_photo": "off" }, { "preview_status": "on" }, { "buzzer_volume": "mute" }, { "buzzer_ring": "off" }, { "capture_default_mode": "precise quality" }, { "precise_cont_time": "0.5 sec" }, { "burst_capture_number": "7 p \/ s" }, { "wifi_ssid": "XiaoYiCamera4" }, { "wifi_password": "123456789" }, { "led_mode": "all enable" }, { "meter_mode": "average" }, { "sd_card_status": "insert" }, { "video_output_dev_type": "hdmi" }, { "sw_version": "YDXJv22L_1.2.13_build-20150906142851_b1049_i841_s1120" }, { "hw_version": "YDXJ_v23L" }, { "dual_stream_status": "on" }, { "streaming_status": "on" }, { "precise_cont_capturing": "off" }, { "piv_enable": "on" }, { "auto_low_light": "off" }, { "loop_record": "off" }, { "warp_enable": "off" }, { "support_auto_low_light": "on" }, { "precise_selftime": "5s" }, { "precise_self_running": "off" }, { "auto_power_off": "off" }, { "serial_number": "Z23L534S5413894" }, { "system_mode": "record" }, { "system_default_mode": "record" }, { "start_wifi_while_booted": "on" }, { "quick_record_time": "0" }, { "precise_self_remain_time": "0" }, { "sdcard_need_format": "no-need" }, { "video_rotate": "off" }, { "emergency_file_backup": "off" }, { "osd_enable": "off" }, { "rec_default_mode": "record" }, { "rec_mode": "record" }, { "record_photo_time": "5" }, { "dev_functions": "7743" }, { "rc_button_mode": "mode_shutter" }, { "timelapse_video_duration": "off" }, { "timelapse_video_resolution": "1920x1080 60P 16:9" }, { "save_log": "off" } ] }
+APP-SEND>>> {"token":2,"msg_id":2,"type":"camera_clock","param":"2015-09-24 10:18:01"}
+CAM-RECV<<< { "rval": 0, "msg_id": 2 ,"type":"camera_clock","param":"2015"}
+APP-SEND>>> {"token":2,"msg_id":259,"param":"none_force"}
+CAM-RECV<<< {"rval":0,"msg_id":259}
+CAM-RECV<<< { "msg_id": 7, "type": "vf_start" }
+APP-SEND>>> {"token":2,"msg_id":1,"type":"app_status"}  
+CAM-RECV<<< {"rval":0,"msg_id":1,"type":"app_status","param":"vf"}
+APP-SEND>>> {"token":2,"msg_id":13}
+CAM-RECV<<< {"rval":0,"msg_id":13,"type":"battery","param":"45"}
+APP-SEND>>> {"token":2,"msg_id":1,"type":"app_status"}
+CAM-RECV<<< {"rval":0,"msg_id":1,"type":"app_status","param":"vf"}
+APP-SEND>>> {"token":2,"msg_id":1,"type":"camera_clock"}
+CAM-RECV<<< {"rval":0,"msg_id":1,"type":"camera_clock","param":"2015-09-24 10:18:18"}
+APP-SEND>>> {"token":2,"msg_id":260}
+CAM-RECV<<< {"rval":0,"msg_id":260}
+CAM-RECV<<< { "msg_id": 7, "type": "vf_stop" }
+APP-SEND>>> {"token":2,"msg_id":1,"type":"wifi_ssid"}
+CAM-RECV<<< {"rval":0,"msg_id":1,"type":"wifi_ssid","param":"XiaoYiCamera4"}
+APP-SEND>>> {"token":2,"msg_id":1,"type":"wifi_password"}
+CAM-RECV<<< {"rval":0,"msg_id":1,"type":"wifi_password","param":"123456789"}
+APP-SEND>>> {"token":2,"msg_id":1,"type":"app_status"}
+CAM-RECV<<< {"rval":0,"msg_id":1,"type":"app_status","param":"idle"}
+APP-SEND>>> {"token":2,"msg_id":2,"type":"wifi_ssid","param":"XiaoYiCamera4"}
+CAM-RECV<<< { "rval": 0, "msg_id": 2 ,"type":"wifi_ssid","param":"XiaoYiCamera4"}
+APP-SEND>>> {"token":2,"msg_id":2,"type":"wifi_password","param":"1234567890"}
+CAM-RECV<<< { "rval": 0, "msg_id": 2 ,"type":"wifi_password","param":"1234567890"}
+CAM-RECV<<< { "msg_id": 7, "type": "battery" ,"param":"44"}
+APP-SEND>>> {"token":2,"msg_id":16777224}
+CAM-RECV<<< {"rval":0,"msg_id":16777224}
+CAM-RECV<<< { "msg_id": 7, "type": "wifi_will_shutdown" }
+APP-SEND>>> {"token":2,"msg_id":258}
+CAM-RECV<<< {"rval":0,"msg_id":258}
+
+================================ RESTART ================================
+APP-SEND>>> {"token":0,"msg_id":257}
+CAM-RECV<<< { "msg_id": 7, "type": "vf_stop" }
+CAM-RECV<<< { "rval": 0, "msg_id": 257, "param": 3 }
+APP-SEND>>> {"token":3,"msg_id":3}
+CAM-RECV<<< { "rval": 0, "msg_id": 3, "param": [ { "camera_clock": "2015-09-24 10:22:34" }, { "video_standard": "NTSC" }, { "app_status": "idle" }, { "video_resolution": "1600x1200 60P 4:3" }, { "video_stamp": "off" }, { "video_quality": "S.Fine" }, { "timelapse_video": "0.5" }, { "capture_mode": "precise quality" }, { "photo_size": "16M (4608x3456 4:3)" }, { "photo_stamp": "off" }, { "photo_quality": "S.Fine" }, { "timelapse_photo": "off" }, { "preview_status": "on" }, { "buzzer_volume": "mute" }, { "buzzer_ring": "off" }, { "capture_default_mode": "precise quality" }, { "precise_cont_time": "0.5 sec" }, { "burst_capture_number": "7 p \/ s" }, { "wifi_ssid": "XiaoYiCamera4" }, { "wifi_password": "1234567890" }, { "led_mode": "all enable" }, { "meter_mode": "average" }, { "sd_card_status": "insert" }, { "video_output_dev_type": "hdmi" }, { "sw_version": "YDXJv22L_1.2.13_build-20150906142851_b1049_i841_s1120" }, { "hw_version": "YDXJ_v23L" }, { "dual_stream_status": "on" }, { "streaming_status": "on" }, { "precise_cont_capturing": "off" }, { "piv_enable": "on" }, { "auto_low_light": "off" }, { "loop_record": "off" }, { "warp_enable": "off" }, { "support_auto_low_light": "on" }, { "precise_selftime": "5s" }, { "precise_self_running": "off" }, { "auto_power_off": "off" }, { "serial_number": "Z23L534S5413894" }, { "system_mode": "record" }, { "system_default_mode": "record" }, { "start_wifi_while_booted": "on" }, { "quick_record_time": "0" }, { "precise_self_remain_time": "0" }, { "sdcard_need_format": "no-need" }, { "video_rotate": "off" }, { "emergency_file_backup": "off" }, { "osd_enable": "off" }, { "rec_default_mode": "record" }, { "rec_mode": "record" }, { "record_photo_time": "5" }, { "dev_functions": "7743" }, { "rc_button_mode": "mode_shutter" }, { "timelapse_video_duration": "off" }, { "timelapse_video_resolution": "1920x1080 60P 16:9" }, { "save_log": "off" } ] }
+APP-SEND>>> {"token":3,"msg_id":2,"type":"camera_clock","param":"2015-09-24 10:22:35"} 
+CAM-RECV<<< { "rval": 0, "msg_id": 2 ,"type":"camera_clock","param":"2015"}
+APP-SEND>>> {"token":3,"msg_id":259,"param":"none_force"}
+CAM-RECV<<< {"rval":0,"msg_id":259}
+CAM-RECV<<< { "msg_id": 7, "type": "vf_start" }
+APP-SEND>>> {"token":3,"msg_id":1,"type":"app_status"}
+CAM-RECV<<< {"rval":0,"msg_id":1,"type":"app_status","param":"vf"}
+APP-SEND>>> {"token":3,"msg_id":13}
+CAM-RECV<<< {"rval":0,"msg_id":13,"type":"battery","param":"42"}
+APP-SEND>>> {"token":3,"msg_id":2,"type":"system_mode","param":"capture"}
+CAM-RECV<<< { "rval": 0, "msg_id": 2 }
+APP-SEND>>> {"token":3,"msg_id":16777228,"param":"precise quality;off"}
+CAM-RECV<<< {"rval":0,"msg_id":16777228}
+CAM-RECV<<< { "msg_id": 7, "type": "battery" ,"param":"41"}
+APP-SEND>>> {"token":3,"msg_id":16777220,"param":"precise quality;off"}
+CAM-RECV<<< {"rval":0,"msg_id":16777220}
+CAM-RECV<<< { "msg_id": 7, "type": "start_photo_capture" ,"param":"precise quality;off"}
+CAM-RECV<<< { "msg_id": 7, "type": "vf_stop" }
+CAM-RECV<<< { "msg_id": 7, "type": "precise_capture_data_ready" }
+CAM-RECV<<< { "msg_id": 7, "type": "photo_taken" ,"param":"/tmp/fuse_d/DCIM/100MEDIA/YDXJ0042.jpg"}
+CAM-RECV<<< { "msg_id": 7, "type": "vf_start" }
+APP-SEND>>> {"token":3,"msg_id":16777229}
+CAM-RECV<<< {"rval":0,"msg_id":16777229}
+APP-SEND>>> {"token":3,"msg_id":1282,"param":"/tmp/fuse_d/DCIM/ -D -S"}
+CAM-RECV<<< {"rval":0,"msg_id":1282,"listing":[{"100MEDIA/":"0 bytes|2015-09-24 10:22:54"}]}
+APP-SEND>>> {"token":3,"msg_id":1282,"param":"/tmp/fuse_d/DCIM/100MEDIA/ -D -S"}
+CAM-RECV<<< {"rval":0,"msg_id":1282,"listing":[{"YDXJ0042.jpg":"3832451 bytes|2015-09-24 10:22:56"}]}
+APP-SEND>>> {"token":3,"msg_id":16777230}
+CAM-RECV<<< {"rval":0,"msg_id":16777230}
+APP-SEND>>> {"token":3,"msg_id":1,"type":"app_status"}
+CAM-RECV<<< {"rval":0,"msg_id":1,"type":"app_status","param":"idle"}
+APP-SEND>>> {"token":3,"msg_id":13}
+CAM-RECV<<< {"rval":0,"msg_id":13,"type":"battery","param":"41"}
+APP-SEND>>> {"token":3,"msg_id":259,"param":"none_force"}
+CAM-RECV<<< { "msg_id": 7, "type": "vf_start" }
+CAM-RECV<<< {"rval":0,"msg_id":259}
+APP-SEND>>> {"token":3,"msg_id":2,"type":"system_mode","param":"record"}
+CAM-RECV<<< { "msg_id": 7, "type": "battery" ,"param":"40"}
+CAM-RECV<<< { "rval": 0, "msg_id": 2 }
+APP-SEND>>> {"token":3,"msg_id":2,"type":"rec_mode","param":"record"}
+CAM-RECV<<< { "rval": 0, "msg_id": 2 ,"type":"rec_mode","param":"record"}
+APP-SEND>>> {"token":3,"msg_id":513}
+CAM-RECV<<< {"rval":0,"msg_id":513}
+CAM-RECV<<< { "msg_id": 7, "type": "start_video_record" }
+CAM-RECV<<< { "msg_id": 7, "type": "vf_stop" }
+APP-SEND>>> {"token":3,"msg_id":515}
+CAM-RECV<<< { "rval": 0, "msg_id": 515, "param": 2 }
+APP-SEND>>> {"token":3,"msg_id":515}
+CAM-RECV<<< { "rval": 0, "msg_id": 515, "param": 2 }
+APP-SEND>>> {"token":3,"msg_id":515}
+CAM-RECV<<< { "rval": 0, "msg_id": 515, "param": 3 }
+APP-SEND>>> {"token":3,"msg_id":515}
+CAM-RECV<<< { "rval": 0, "msg_id": 515, "param": 4 }
+APP-SEND>>> {"token":3,"msg_id":515}
+CAM-RECV<<< { "rval": 0, "msg_id": 515, "param": 4 }
+APP-SEND>>> {"token":3,"msg_id":515}
+CAM-RECV<<< { "rval": 0, "msg_id": 515, "param": 5 }
+APP-SEND>>> {"token":3,"msg_id":515}
+CAM-RECV<<< { "rval": 0, "msg_id": 515, "param": 5 }
+APP-SEND>>> {"token":3,"msg_id":515}
+CAM-RECV<<< { "rval": 0, "msg_id": 515, "param": 6 }
+APP-SEND>>> {"token":3,"msg_id":515}
+CAM-RECV<<< { "rval": 0, "msg_id": 515, "param": 6 }
+APP-SEND>>> {"token":3,"msg_id":515}
+CAM-RECV<<< { "rval": 0, "msg_id": 515, "param": 7 }
+APP-SEND>>> {"token":3,"msg_id":515}
+CAM-RECV<<< { "rval": 0, "msg_id": 515, "param": 8 }
+APP-SEND>>> {"token":3,"msg_id":515}
+CAM-RECV<<< { "rval": 0, "msg_id": 515, "param": 8 }
+APP-SEND>>> {"token":3,"msg_id":515}
+CAM-RECV<<< { "rval": 0, "msg_id": 515, "param": 9 }
+APP-SEND>>> {"token":3,"msg_id":515}
+CAM-RECV<<< { "rval": 0, "msg_id": 515, "param": 10 }
+APP-SEND>>> {"token":3,"msg_id":515}
+CAM-RECV<<< { "rval": 0, "msg_id": 515, "param": 11 }
+APP-SEND>>> {"token":3,"msg_id":515}
+CAM-RECV<<< { "rval": 0, "msg_id": 515, "param": 11 }
+APP-SEND>>> {"token":3,"msg_id":515}
+CAM-RECV<<< { "rval": 0, "msg_id": 515, "param": 12 }
+APP-SEND>>> {"token":3,"msg_id":515}
+CAM-RECV<<< { "rval": 0, "msg_id": 515, "param": 12 }
+APP-SEND>>> {"token":3,"msg_id":515}
+CAM-RECV<<< { "rval": 0, "msg_id": 515, "param": 13 }
+APP-SEND>>> {"token":3,"msg_id":515}
+CAM-RECV<<< { "rval": 0, "msg_id": 515, "param": 13 }
+APP-SEND>>> {"token":3,"msg_id":515}
+CAM-RECV<<< { "rval": 0, "msg_id": 515, "param": 14 }
+APP-SEND>>> {"token":3,"msg_id":515}
+CAM-RECV<<< { "rval": 0, "msg_id": 515, "param": 14 }
+APP-SEND>>> {"token":3,"msg_id":515}
+CAM-RECV<<< { "rval": 0, "msg_id": 515, "param": 15 }
+APP-SEND>>> {"token":3,"msg_id":515}
+CAM-RECV<<< { "rval": 0, "msg_id": 515, "param": 16 }
+APP-SEND>>> {"token":3,"msg_id":515}
+CAM-RECV<<< { "rval": 0, "msg_id": 515, "param": 16 }
+APP-SEND>>> {"token":3,"msg_id":515}
+CAM-RECV<<< { "rval": 0, "msg_id": 515, "param": 16 }
+APP-SEND>>> {"token":3,"msg_id":515}
+CAM-RECV<<< { "rval": 0, "msg_id": 515, "param": 17 }
+APP-SEND>>> {"token":3,"msg_id":515}
+CAM-RECV<<< { "rval": 0, "msg_id": 515, "param": 17 }
+APP-SEND>>> {"token":3,"msg_id":515}
+CAM-RECV<<< { "rval": 0, "msg_id": 515, "param": 18 }
+APP-SEND>>> {"token":3,"msg_id":515}
+CAM-RECV<<< { "rval": 0, "msg_id": 515, "param": 19 }
+APP-SEND>>> {"token":3,"msg_id":515}
+CAM-RECV<<< { "rval": 0, "msg_id": 515, "param": 19 }
+APP-SEND>>> {"token":3,"msg_id":515}
+CAM-RECV<<< { "rval": 0, "msg_id": 515, "param": 20 }
+ APP-SEND>>> {"token":3,"msg_id":515}
+CAM-RECV<<< { "rval": 0, "msg_id": 515, "param": 21 }
+APP-SEND>>> {"token":3,"msg_id":515}
+CAM-RECV<<< { "rval": 0, "msg_id": 515, "param": 21 }
+APP-SEND>>> {"token":3,"msg_id":515}
+CAM-RECV<<< { "rval": 0, "msg_id": 515, "param": 22 }
+APP-SEND>>> {"token":3,"msg_id":515}
+CAM-RECV<<< { "rval": 0, "msg_id": 515, "param": 22 }
+APP-SEND>>> {"token":3,"msg_id":515}
+CAM-RECV<<< { "rval": 0, "msg_id": 515, "param": 23 }
+APP-SEND>>> {"token":3,"msg_id":515}
+CAM-RECV<<< { "rval": 0, "msg_id": 515, "param": 24 }
+APP-SEND>>> {"token":3,"msg_id":515}
+CAM-RECV<<< { "rval": 0, "msg_id": 515, "param": 24 }
+APP-SEND>>> {"token":3,"msg_id":515}
+CAM-RECV<<< { "rval": 0, "msg_id": 515, "param": 25 }
+APP-SEND>>> {"token":3,"msg_id":515}
+CAM-RECV<<< { "rval": 0, "msg_id": 515, "param": 25 }
+APP-SEND>>> {"token":3,"msg_id":515}
+CAM-RECV<<< { "rval": 0, "msg_id": 515, "param": 26 }
+APP-SEND>>> {"token":3,"msg_id":515}
+CAM-RECV<<< { "rval": 0, "msg_id": 515, "param": 27 }
+APP-SEND>>> {"token":3,"msg_id":515}
+CAM-RECV<<< { "rval": 0, "msg_id": 515, "param": 27 }
+APP-SEND>>> {"token":3,"msg_id":515}
+CAM-RECV<<< { "rval": 0, "msg_id": 515, "param": 27 }
+CAM-RECV<<< { "msg_id": 7, "type": "battery" ,"param":"39"}
+APP-SEND>>> {"token":3,"msg_id":515}
+CAM-RECV<<< { "rval": 0, "msg_id": 515, "param": 29 }
+APP-SEND>>> {"token":3,"msg_id":515}
+CAM-RECV<<< { "rval": 0, "msg_id": 515, "param": 29 }
+APP-SEND>>> {"token":3,"msg_id":515}
+CAM-RECV<<< { "rval": 0, "msg_id": 515, "param": 30 }
+APP-SEND>>> {"token":3,"msg_id":515}
+CAM-RECV<<< { "rval": 0, "msg_id": 515, "param": 31 }
+APP-SEND>>> {"token":3,"msg_id":515}
+CAM-RECV<<< { "rval": 0, "msg_id": 515, "param": 31 }
+APP-SEND>>> {"token":3,"msg_id":514}
+CAM-RECV<<< {"rval":0,"msg_id":514}
+APP-SEND>>> {"token":3,"msg_id":515}
+CAM-RECV<<< { "rval": -14, "msg_id": 515 }
+APP-SEND>>> {"token":3,"msg_id":515}
+CAM-RECV<<< { "rval": -14, "msg_id": 515 }
+APP-SEND>>> {"token":3,"msg_id":515}
+CAM-RECV<<< { "rval": -14, "msg_id": 515 }
+APP-SEND>>> {"token":3,"msg_id":515}
+CAM-RECV<<< { "rval": -14, "msg_id": 515 }
+APP-SEND>>> {"token":3,"msg_id":515}
+CAM-RECV<<< { "msg_id": 7, "type": "video_record_complete" ,"param":"/tmp/fuse_d/DCIM/100MEDIA/YDXJ0043.mp4"}
+CAM-RECV<<< { "msg_id": 7, "type": "vf_start" }
+CAM-RECV<<< { "rval": -14, "msg_id": 515 }
+APP-SEND>>> {"token":3,"msg_id":515}
+CAM-RECV<<< { "rval": -14, "msg_id": 515 }
+APP-SEND>>> {"token":3,"msg_id":1026,"param":"/tmp/fuse_d/DCIM/100MEDIA/YDXJ0043.mp4"}
+CAM-RECV<<< {"rval":0,"msg_id":1026,"thumb_file":"YDXJ0043.THM","size":138953622,"date":"2015-09-24 10:24:42","resolution":"1600x1200","duration":"31","framerate":59,"media_type":"mov"}
+APP-SEND>>> {"token":3,"msg_id":16777229}
+CAM-RECV<<< {"rval":0,"msg_id":16777229}
+APP-SEND>>> {"token":3,"msg_id":1282,"param":"/tmp/fuse_d/DCIM/ -D -S"}
+CAM-RECV<<< {"rval":0,"msg_id":1282,"listing":[{"100MEDIA/":"0 bytes|2015-09-24 10:22:54"}]}
+APP-SEND>>> {"token":3,"msg_id":1282,"param":"/tmp/fuse_d/DCIM/100MEDIA/ -D -S"}
+CAM-RECV<<< {"rval":0,"msg_id":1282,"listing":[{"YDXJ0042.jpg":"3832451 bytes|2015-09-24 10:22:56"},{"YDXJ0043.mp4":"138953622 bytes|2015-09-24 10:24:42"},{"YDXJ0043_thm.mp4":"2144090 bytes|2015-09-24 10:24:42"},{"YDXJ0043.THM":"37567 bytes|2015-09-24 10:24:10"}]}
+APP-SEND>>> {"token":3,"msg_id":16777230}
+CAM-RECV<<< {"rval":0,"msg_id":16777230}
+APP-SEND>>> {"token":3,"msg_id":1,"type":"app_status"}
+CAM-RECV<<< {"rval":0,"msg_id":1,"type":"app_status","param":"idle"}
+APP-SEND>>> {"token":3,"msg_id":13}
+CAM-RECV<<< {"rval":0,"msg_id":13,"type":"battery","param":"38"}
+CAM-RECV<<< { "msg_id": 7, "type": "vf_start" }
+APP-SEND>>> {"token":3,"msg_id":259,"param":"none_force"}
+CAM-RECV<<< {"rval":0,"msg_id":259}
+
+>>> ================================ RESTART ================================
+11:32:38.750: Open Camera Port 7878
+11:32:39.008: Success Camera Port 7878
+11:32:39.015: Open Phone Port 7878
+11:33:05.476: ('192.168.42.100', 52192)
+11:33:05.555: APP-SEND >>> {"token":0,"msg_id":257}
+11:33:07.733: CAM-RECV <<< { "msg_id": 7, "type": "adapter" ,"param":"34"}
+11:33:08.261: CAM-RECV <<< { "msg_id": 7, "type": "vf_stop" }
+11:33:08.472: CAM-RECV <<< { "rval": 0, "msg_id": 257, "param": 1 }
+11:33:08.572: APP-SEND >>> {"token":1,"msg_id":3}
+11:33:09.125: CAM-RECV <<< { "rval": 0, "msg_id": 3, "param": [ { "camera_clock": "2015-09-24 11:33:08" }, { "video_standard": "NTSC" }, { "app_status": "idle" }, { "video_resolution": "1600x1200 60P 4:3" }, { "video_stamp": "off" }, { "video_quality": "S.Fine" }, { "timelapse_video": "0.5" }, { "capture_mode": "precise quality" }, { "photo_size": "16M (4608x3456 4:3)" }, { "photo_stamp": "off" }, { "photo_quality": "S.Fine" }, { "timelapse_photo": "off" }, { "preview_status": "on" }, { "buzzer_volume": "mute" }, { "buzzer_ring": "off" }, { "capture_default_mode": "precise quality" }, { "precise_cont_time": "0.5 sec" }, { "burst_capture_number": "7 p \/ s" }, { "wifi_ssid": "XiaoYiCamera4" }, { "wifi_password": "1234567890" }, { "led_mode": "all enable" }, { "meter_mode": "average" }, { "sd_card_status": "insert" }, { "video_output_dev_type": "hdmi" }, { "sw_version": "YDXJv22L_1.2.13_build-20150906142851_b1049_i841_s1120" }, { "hw_version": "YDXJ_v23L" }, { "dual_stream_status": "on" }, { "streaming_status": "on" }, { "precise_cont_capturing": "off" }, { "piv_enable": "on" }, { "auto_low_light": "off" }, { "loop_record": "off" }, { "warp_enable": "off" }, { "support_auto_low_light": "on" }, { "precise_selftime": "5s" }, { "precise_self_running": "off" }, { "auto_power_off": "off" }, { "serial_number": "Z23L534S5413894" }, { "system_mode": "record" }, { "system_default_mode": "record" }, { "start_wifi_while_booted": "on" }, { "quick_record_time": "0" }, { "precise_self_remain_time": "0" }, { "sdcard_need_format": "no-need" }, { "video_rotate": "off" }, { "emergency_file_backup": "off" }, { "osd_enable": "off" }, { "rec_default_mode": "record" }, { "rec_mode": "record" }, { "record_photo_time": "5" }, { "dev_functions": "7743" }, { "rc_button_mode": "mode_shutter" }, { "timelapse_video_duration": "off" }, { "timelapse_video_resolution": "1920x1080 60P 16:9" }, { "save_log": "off" } ] }
+11:33:09.209: APP-SEND >>> {"token":1,"msg_id":2,"type":"camera_clock","param":"2015-09-24 11:33:09"}
+11:33:10.447: CAM-RECV <<< { "rval": 0, "msg_id": 2 ,"type":"camera_clock","param":"2015"}
+11:33:10.777: APP-SEND >>> {"token":1,"msg_id":259,"param":"none_force"}
+11:33:12.186: CAM-RECV <<< {"rval":0,"msg_id":259}
+11:33:13.412: CAM-RECV <<< { "msg_id": 7, "type": "vf_start" }
+11:33:13.946: APP-SEND >>> {"token":1,"msg_id":1,"type":"app_status"}
+11:33:14.490: CAM-RECV <<< {"rval":0,"msg_id":1,"type":"app_status","param":"vf"}
+11:33:14.526: APP-SEND >>> {"token":1,"msg_id":13}
+11:33:14.668: CAM-RECV <<< {"rval":0,"msg_id":13,"type":"adapter","param":"34"}
+11:33:19.772: APP-SEND >>> {"token":1,"msg_id":2,"type":"system_mode","param":"record"}
+11:33:21.103: CAM-RECV <<< { "rval": 0, "msg_id": 2 }
+11:33:21.309: APP-SEND >>> {"token":1,"msg_id":2,"type":"rec_mode","param":"record_timelapse"}
+11:33:22.335: CAM-RECV <<< { "rval": 0, "msg_id": 2 ,"type":"rec_mode","param":"record_timelapse"}
+11:33:34.105: APP-SEND >>> {"token":1,"msg_id":2,"type":"timelapse_video","param":"0.5"}
+11:33:35.423: CAM-RECV <<< { "rval": 0, "msg_id": 2 }
+11:33:47.412: APP-SEND >>> {"token":1,"msg_id":2,"type":"timelapse_video_duration","param":"6s"}
+11:33:48.738: CAM-RECV <<< { "rval": 0, "msg_id": 2 ,"type":"timelapse_video_duration","param":"6s"}
+11:33:52.375: APP-SEND >>> {"token":1,"msg_id":513}
+11:33:52.544: CAM-RECV <<< {"rval":0,"msg_id":513}
+11:33:53.147: CAM-RECV <<< { "msg_id": 7, "type": "start_video_record" }
+11:33:53.552: APP-SEND >>> {"token":1,"msg_id":515}
+11:33:53.568: CAM-RECV <<< { "msg_id": 7, "type": "vf_stop" }
+11:33:53.830: CAM-RECV <<< { "rval": 0, "msg_id": 515, "param": 0 }
+11:33:54.484: APP-SEND >>> {"token":1,"msg_id":16777241}
+11:33:54.696: CAM-RECV <<< {"rval":0,"msg_id":16777241,"param":"1"}
+11:33:55.104: APP-SEND >>> {"token":1,"msg_id":16777241}
+11:33:55.382: CAM-RECV <<< {"rval":0,"msg_id":16777241,"param":"2"}
+11:33:55.732: APP-SEND >>> {"token":1,"msg_id":16777241}
+11:33:55.929: CAM-RECV <<< {"rval":0,"msg_id":16777241,"param":"3"}
+11:33:56.522: APP-SEND >>> {"token":1,"msg_id":16777241}
+11:33:56.730: CAM-RECV <<< {"rval":0,"msg_id":16777241,"param":"4"}
+11:33:57.079: APP-SEND >>> {"token":1,"msg_id":16777241}
+11:33:57.163: CAM-RECV <<< {"rval":0,"msg_id":16777241,"param":"4"}
+11:33:57.390: APP-SEND >>> {"token":1,"msg_id":16777241}
+11:33:58.471: CAM-RECV <<< {"rval":0,"msg_id":16777241,"param":"5"}
+11:33:58.574: APP-SEND >>> {"token":1,"msg_id":16777241}
+11:33:58.824: CAM-RECV <<< {"rval":0,"msg_id":16777241,"param":"6"}
+11:33:59.200: APP-SEND >>> {"token":1,"msg_id":16777241}
+11:33:59.326: CAM-RECV <<< {"rval":0,"msg_id":16777241,"param":"6"}
+11:33:59.710: APP-SEND >>> {"token":1,"msg_id":16777241}
+11:34:00.406: CAM-RECV <<< {"rval":0,"msg_id":16777241,"param":"7"}
+11:34:00.858: APP-SEND >>> {"token":1,"msg_id":16777241}
+11:34:01.063: CAM-RECV <<< {"rval":0,"msg_id":16777241,"param":"8"}
+11:34:01.546: APP-SEND >>> {"token":1,"msg_id":16777241}
+11:34:01.738: CAM-RECV <<< {"rval":0,"msg_id":16777241,"param":"9"}
+11:34:02.200: APP-SEND >>> {"token":1,"msg_id":16777241}
+11:34:02.252: CAM-RECV <<< {"rval":0,"msg_id":16777241,"param":"9"}
+11:34:02.674: APP-SEND >>> {"token":1,"msg_id":16777241}
+11:34:03.329: CAM-RECV <<< {"rval":0,"msg_id":16777241,"param":"10"}
+11:34:03.554: APP-SEND >>> {"token":1,"msg_id":16777241}
+11:34:03.733: CAM-RECV <<< {"rval":0,"msg_id":16777241,"param":"11"}
+11:34:04.506: APP-SEND >>> {"token":1,"msg_id":16777241}
+11:34:04.751: CAM-RECV <<< {"rval":0,"msg_id":16777241,"param":"12"}
+11:34:05.125: APP-SEND >>> {"token":1,"msg_id":16777241}
+11:34:05.280: CAM-RECV <<< {"rval":0,"msg_id":16777241,"param":"12"}
+11:34:05.491: APP-SEND >>> {"token":1,"msg_id":16777241}
+11:34:05.728: CAM-RECV <<< {"rval":0,"msg_id":16777241,"param":"12"}
+11:34:06.179: APP-SEND >>> {"token":1,"msg_id":16777241}
+11:34:06.431: CAM-RECV <<< {"rval":0,"msg_id":16777241,"param":"13"}
+11:34:06.741: APP-SEND >>> {"token":1,"msg_id":16777241}
+11:34:07.413: CAM-RECV <<< {"rval":0,"msg_id":16777241,"param":"14"}
+11:34:07.736: APP-SEND >>> {"token":1,"msg_id":16777241}
+11:34:07.858: CAM-RECV <<< { "msg_id": 7, "type": "rec_time" ,"param":"1"}
+11:34:08.070: CAM-RECV <<< {"rval":0,"msg_id":16777241,"param":"15"}
+11:34:08.193: APP-SEND >>> {"token":1,"msg_id":16777241}
+11:34:09.348: CAM-RECV <<< {"rval":0,"msg_id":16777241,"param":"16"}
+11:34:09.851: APP-SEND >>> {"token":1,"msg_id":16777241}
+11:34:10.053: CAM-RECV <<< {"rval":0,"msg_id":16777241,"param":"17"}
+11:34:10.351: APP-SEND >>> {"token":1,"msg_id":16777241}
+11:34:11.149: CAM-RECV <<< {"rval":0,"msg_id":16777241,"param":"18"}
+11:34:11.398: APP-SEND >>> {"token":1,"msg_id":16777241}
+11:34:11.566: CAM-RECV <<< {"rval":0,"msg_id":16777241,"param":"18"}
+11:34:11.706: APP-SEND >>> {"token":1,"msg_id":16777241}
+11:34:12.194: CAM-RECV <<< {"rval":0,"msg_id":16777241,"param":"19"}
+11:34:12.602: APP-SEND >>> {"token":1,"msg_id":16777241}
+11:34:12.747: CAM-RECV <<< {"rval":0,"msg_id":16777241,"param":"20"}
+11:34:12.850: APP-SEND >>> {"token":1,"msg_id":16777241}
+11:34:13.073: CAM-RECV <<< {"rval":0,"msg_id":16777241,"param":"20"}
+11:34:13.275: APP-SEND >>> {"token":1,"msg_id":16777241}
+11:34:13.476: CAM-RECV <<< {"rval":0,"msg_id":16777241,"param":"20"}
+11:34:13.825: APP-SEND >>> {"token":1,"msg_id":16777241}
+11:34:14.026: CAM-RECV <<< {"rval":0,"msg_id":16777241,"param":"21"}
+11:34:14.496: APP-SEND >>> {"token":1,"msg_id":16777241}
+11:34:14.733: CAM-RECV <<< {"rval":0,"msg_id":16777241,"param":"22"}
+11:34:15.203: APP-SEND >>> {"token":1,"msg_id":16777241}
+11:34:15.795: CAM-RECV <<< {"rval":0,"msg_id":16777241,"param":"22"}
+11:34:15.996: APP-SEND >>> {"token":1,"msg_id":16777241}
+11:34:16.130: CAM-RECV <<< {"rval":0,"msg_id":16777241,"param":"23"}
+11:34:16.477: APP-SEND >>> {"token":1,"msg_id":16777241}
+11:34:17.213: CAM-RECV <<< {"rval":0,"msg_id":16777241,"param":"24"}
+11:34:17.612: APP-SEND >>> {"token":1,"msg_id":16777241}
+11:34:17.846: CAM-RECV <<< {"rval":0,"msg_id":16777241,"param":"25"}
+11:34:17.982: APP-SEND >>> {"token":1,"msg_id":16777241}
+11:34:18.755: CAM-RECV <<< {"rval":0,"msg_id":16777241,"param":"25"}
+11:34:19.357: APP-SEND >>> {"token":1,"msg_id":16777241}
+11:34:19.571: CAM-RECV <<< {"rval":0,"msg_id":16777241,"param":"26"}
+11:34:19.772: APP-SEND >>> {"token":1,"msg_id":16777241}
+11:34:20.575: CAM-RECV <<< {"rval":0,"msg_id":16777241,"param":"27"}
+11:34:21.085: APP-SEND >>> {"token":1,"msg_id":16777241}
+11:34:21.293: CAM-RECV <<< {"rval":0,"msg_id":16777241,"param":"28"}
+11:34:21.603: APP-SEND >>> {"token":1,"msg_id":16777241}
+11:34:22.318: CAM-RECV <<< {"rval":0,"msg_id":16777241,"param":"29"}
+11:34:22.731: APP-SEND >>> {"token":1,"msg_id":16777241}
+11:34:22.843: CAM-RECV <<< { "msg_id": 7, "type": "rec_time" ,"param":"2"}
+11:34:23.056: CAM-RECV <<< {"rval":0,"msg_id":16777241,"param":"30"}
+11:34:23.228: APP-SEND >>> {"token":1,"msg_id":16777241}
+11:34:24.394: CAM-RECV <<< {"rval":0,"msg_id":16777241,"param":"31"}
+11:34:24.784: APP-SEND >>> {"token":1,"msg_id":16777241}
+11:34:24.994: CAM-RECV <<< {"rval":0,"msg_id":16777241,"param":"32"}
+11:34:25.494: APP-SEND >>> {"token":1,"msg_id":16777241}
+11:34:25.593: CAM-RECV <<< {"rval":0,"msg_id":16777241,"param":"32"}
+11:34:26.110: APP-SEND >>> {"token":1,"msg_id":16777241}
+11:34:26.277: CAM-RECV <<< {"rval":0,"msg_id":16777241,"param":"33"}
+11:34:26.487: APP-SEND >>> {"token":1,"msg_id":16777241}
+11:34:26.551: CAM-RECV <<< {"rval":0,"msg_id":16777241,"param":"33"}
+11:34:26.880: APP-SEND >>> {"token":1,"msg_id":16777241}
+11:34:27.083: CAM-RECV <<< {"rval":0,"msg_id":16777241,"param":"34"}
+11:34:27.642: APP-SEND >>> {"token":1,"msg_id":16777241}
+11:34:27.847: CAM-RECV <<< {"rval":0,"msg_id":16777241,"param":"35"}
+11:34:28.121: APP-SEND >>> {"token":1,"msg_id":16777241}
+11:34:28.179: CAM-RECV <<< {"rval":0,"msg_id":16777241,"param":"35"}
+11:34:28.223: APP-SEND >>> {"token":1,"msg_id":16777241}
+11:34:28.279: CAM-RECV <<< {"rval":0,"msg_id":16777241,"param":"35"}
+11:34:28.334: APP-SEND >>> {"token":1,"msg_id":16777241}
+11:34:29.345: CAM-RECV <<< {"rval":0,"msg_id":16777241,"param":"36"}
+11:34:29.736: APP-SEND >>> {"token":1,"msg_id":16777241}
+11:34:30.358: CAM-RECV <<< {"rval":0,"msg_id":16777241,"param":"37"}
+11:34:30.730: APP-SEND >>> {"token":1,"msg_id":16777241}
+11:34:31.533: CAM-RECV <<< {"rval":0,"msg_id":16777241,"param":"38"}
+11:34:32.253: APP-SEND >>> {"token":1,"msg_id":16777241}
+11:34:32.358: CAM-RECV <<< {"rval":0,"msg_id":16777241,"param":"39"}
+11:34:32.851: APP-SEND >>> {"token":1,"msg_id":16777241}
+11:34:33.060: CAM-RECV <<< {"rval":0,"msg_id":16777241,"param":"40"}
+11:34:33.243: APP-SEND >>> {"token":1,"msg_id":16777241}
+11:34:33.329: CAM-RECV <<< {"rval":0,"msg_id":16777241,"param":"40"}
+11:34:33.442: APP-SEND >>> {"token":1,"msg_id":16777241}
+11:34:34.298: CAM-RECV <<< {"rval":0,"msg_id":16777241,"param":"41"}
+11:34:34.722: APP-SEND >>> {"token":1,"msg_id":16777241}
+11:34:34.928: CAM-RECV <<< {"rval":0,"msg_id":16777241,"param":"42"}
+11:34:35.337: APP-SEND >>> {"token":1,"msg_id":16777241}
+11:34:35.464: CAM-RECV <<< {"rval":0,"msg_id":16777241,"param":"42"}
+11:34:35.852: APP-SEND >>> {"token":1,"msg_id":16777241}
+11:34:36.133: CAM-RECV <<< {"rval":0,"msg_id":16777241,"param":"43"}
+11:34:36.478: APP-SEND >>> {"token":1,"msg_id":16777241}
+11:34:36.958: CAM-RECV <<< {"rval":0,"msg_id":16777241,"param":"44"}
+11:34:37.474: APP-SEND >>> {"token":1,"msg_id":16777241}
+11:34:37.579: CAM-RECV <<< {"rval":0,"msg_id":16777241,"param":"44"}
+11:34:37.989: CAM-RECV <<< { "msg_id": 7, "type": "rec_time" ,"param":"3"}
+11:34:37.994: APP-SEND >>> {"token":1,"msg_id":16777241}
+11:34:38.194: CAM-RECV <<< {"rval":0,"msg_id":16777241,"param":"45"}
+11:34:38.397: APP-SEND >>> {"token":1,"msg_id":16777241}
+11:34:38.650: CAM-RECV <<< {"rval":0,"msg_id":16777241,"param":"45"}
+11:34:39.013: APP-SEND >>> {"token":1,"msg_id":16777241}
+11:34:39.100: CAM-RECV <<< {"rval":0,"msg_id":16777241,"param":"46"}
+11:34:39.523: APP-SEND >>> {"token":1,"msg_id":16777241}
+11:34:39.661: CAM-RECV <<< {"rval":0,"msg_id":16777241,"param":"46"}
+11:34:40.039: APP-SEND >>> {"token":1,"msg_id":16777241}
+11:34:40.292: CAM-RECV <<< {"rval":0,"msg_id":16777241,"param":"47"}
+11:34:40.652: APP-SEND >>> {"token":1,"msg_id":16777241}
+11:34:40.855: CAM-RECV <<< {"rval":0,"msg_id":16777241,"param":"48"}
+11:34:41.366: APP-SEND >>> {"token":1,"msg_id":16777241}
+11:34:41.608: CAM-RECV <<< {"rval":0,"msg_id":16777241,"param":"48"}
+11:34:41.984: APP-SEND >>> {"token":1,"msg_id":16777241}
+11:34:42.186: CAM-RECV <<< {"rval":0,"msg_id":16777241,"param":"49"}
+11:34:42.698: APP-SEND >>> {"token":1,"msg_id":16777241}
+11:34:43.103: CAM-RECV <<< {"rval":0,"msg_id":16777241,"param":"50"}
+11:34:43.526: APP-SEND >>> {"token":1,"msg_id":16777241}
+11:34:43.618: CAM-RECV <<< {"rval":0,"msg_id":16777241,"param":"50"}
+11:34:43.829: APP-SEND >>> {"token":1,"msg_id":16777241}
+11:34:44.029: CAM-RECV <<< {"rval":0,"msg_id":16777241,"param":"51"}
+11:34:44.442: APP-SEND >>> {"token":1,"msg_id":16777241}
+11:34:44.731: CAM-RECV <<< {"rval":0,"msg_id":16777241,"param":"52"}
+11:34:45.073: APP-SEND >>> {"token":1,"msg_id":16777241}
+11:34:45.288: CAM-RECV <<< {"rval":0,"msg_id":16777241,"param":"52"}
+11:34:45.771: APP-SEND >>> {"token":1,"msg_id":16777241}
+11:34:45.854: CAM-RECV <<< {"rval":0,"msg_id":16777241,"param":"53"}
+11:34:46.178: APP-SEND >>> {"token":1,"msg_id":16777241}
+11:34:46.897: CAM-RECV <<< {"rval":0,"msg_id":16777241,"param":"54"}
+11:34:47.320: APP-SEND >>> {"token":1,"msg_id":16777241}
+11:34:47.458: CAM-RECV <<< {"rval":0,"msg_id":16777241,"param":"54"}
+11:34:47.828: APP-SEND >>> {"token":1,"msg_id":16777241}
+11:34:48.530: CAM-RECV <<< {"rval":0,"msg_id":16777241,"param":"55"}
+11:34:48.720: APP-SEND >>> {"token":1,"msg_id":16777241}
+11:34:48.919: CAM-RECV <<< {"rval":0,"msg_id":16777241,"param":"56"}
+11:34:49.077: APP-SEND >>> {"token":1,"msg_id":16777241}
+11:34:49.258: CAM-RECV <<< {"rval":0,"msg_id":16777241,"param":"56"}
+11:34:49.477: APP-SEND >>> {"token":1,"msg_id":16777241}
+11:34:49.657: CAM-RECV <<< {"rval":0,"msg_id":16777241,"param":"56"}
+11:34:50.176: APP-SEND >>> {"token":1,"msg_id":16777241}
+11:34:50.327: CAM-RECV <<< {"rval":0,"msg_id":16777241,"param":"57"}
+11:34:51.609: APP-SEND >>> {"token":1,"msg_id":16777241}
+11:34:51.828: CAM-RECV <<< {"rval":0,"msg_id":16777241,"param":"59"}
+11:34:52.220: APP-SEND >>> {"token":1,"msg_id":16777241}
+11:34:52.449: CAM-RECV <<< {"rval":0,"msg_id":16777241,"param":"59"}
+11:34:52.677: APP-SEND >>> {"token":1,"msg_id":16777241}
+11:34:52.829: CAM-RECV <<< { "msg_id": 7, "type": "rec_time" ,"param":"4"}
+11:34:53.458: CAM-RECV <<< {"rval":0,"msg_id":16777241,"param":"60"}
+11:34:53.814: APP-SEND >>> {"token":1,"msg_id":16777241}
+11:34:53.897: CAM-RECV <<< {"rval":0,"msg_id":16777241,"param":"61"}
+11:34:54.133: APP-SEND >>> {"token":1,"msg_id":16777241}
+11:34:54.469: CAM-RECV <<< {"rval":0,"msg_id":16777241,"param":"61"}
+11:34:54.883: APP-SEND >>> {"token":1,"msg_id":16777241}
+11:34:55.090: CAM-RECV <<< {"rval":0,"msg_id":16777241,"param":"62"}
+11:34:55.402: APP-SEND >>> {"token":1,"msg_id":16777241}
+11:34:55.550: CAM-RECV <<< {"rval":0,"msg_id":16777241,"param":"62"}
+11:34:55.808: APP-SEND >>> {"token":1,"msg_id":16777241}
+11:34:56.620: CAM-RECV <<< {"rval":0,"msg_id":16777241,"param":"63"}
+11:34:57.153: APP-SEND >>> {"token":1,"msg_id":16777241}
+11:34:58.154: CAM-RECV <<< {"rval":0,"msg_id":16777241,"param":"64"}
+11:34:58.571: APP-SEND >>> {"token":1,"msg_id":16777241}
+11:34:58.909: CAM-RECV <<< {"rval":0,"msg_id":16777241,"param":"66"}
+11:34:59.084: APP-SEND >>> {"token":1,"msg_id":16777241}
+11:34:59.171: CAM-RECV <<< {"rval":0,"msg_id":16777241,"param":"66"}
+11:34:59.234: APP-SEND >>> {"token":1,"msg_id":16777241}
+11:34:59.849: CAM-RECV <<< {"rval":0,"msg_id":16777241,"param":"67"}
+11:35:00.083: APP-SEND >>> {"token":1,"msg_id":16777241}
+11:35:00.312: CAM-RECV <<< {"rval":0,"msg_id":16777241,"param":"67"}
+11:35:00.415: APP-SEND >>> {"token":1,"msg_id":16777241}
+11:35:00.598: CAM-RECV <<< {"rval":0,"msg_id":16777241,"param":"67"}
+11:35:01.030: APP-SEND >>> {"token":1,"msg_id":16777241}
+11:35:01.441: CAM-RECV <<< {"rval":0,"msg_id":16777241,"param":"68"}
+11:35:01.646: APP-SEND >>> {"token":1,"msg_id":16777241}
+11:35:01.944: CAM-RECV <<< {"rval":0,"msg_id":16777241,"param":"69"}
+11:35:02.268: APP-SEND >>> {"token":1,"msg_id":16777241}
+11:35:02.466: CAM-RECV <<< {"rval":0,"msg_id":16777241,"param":"69"}
+11:35:02.895: APP-SEND >>> {"token":1,"msg_id":16777241}
+11:35:03.118: CAM-RECV <<< {"rval":0,"msg_id":16777241,"param":"70"}
+11:35:03.589: APP-SEND >>> {"token":1,"msg_id":16777241}
+11:35:03.792: CAM-RECV <<< {"rval":0,"msg_id":16777241,"param":"71"}
+11:35:04.099: APP-SEND >>> {"token":1,"msg_id":16777241}
+11:35:04.178: CAM-RECV <<< {"rval":0,"msg_id":16777241,"param":"71"}
+11:35:04.254: APP-SEND >>> {"token":1,"msg_id":16777241}
+11:35:04.319: CAM-RECV <<< {"rval":0,"msg_id":16777241,"param":"71"}
+11:35:04.355: APP-SEND >>> {"token":1,"msg_id":16777241}
+11:35:04.438: CAM-RECV <<< {"rval":0,"msg_id":16777241,"param":"71"}
+11:35:04.627: APP-SEND >>> {"token":1,"msg_id":16777241}
+11:35:05.097: CAM-RECV <<< {"rval":0,"msg_id":16777241,"param":"72"}
+11:35:05.586: APP-SEND >>> {"token":1,"msg_id":16777241}
+11:35:05.691: CAM-RECV <<< {"rval":0,"msg_id":16777241,"param":"72"}
+11:35:06.046: APP-SEND >>> {"token":1,"msg_id":16777241}
+11:35:06.756: CAM-RECV <<< {"rval":0,"msg_id":16777241,"param":"74"}
+11:35:07.195: APP-SEND >>> {"token":1,"msg_id":16777241}
+11:35:07.450: CAM-RECV <<< {"rval":0,"msg_id":16777241,"param":"74"}
+11:35:07.793: CAM-RECV <<< { "msg_id": 7, "type": "rec_time" ,"param":"5"}
+11:35:07.807: APP-SEND >>> {"token":1,"msg_id":16777241}
+11:35:08.601: CAM-RECV <<< {"rval":0,"msg_id":16777241,"param":"75"}
+11:35:09.013: APP-SEND >>> {"token":1,"msg_id":16777241}
+11:35:09.220: CAM-RECV <<< {"rval":0,"msg_id":16777241,"param":"76"}
+11:35:09.628: APP-SEND >>> {"token":1,"msg_id":16777241}
+11:35:09.850: CAM-RECV <<< {"rval":0,"msg_id":16777241,"param":"77"}
+11:35:10.265: APP-SEND >>> {"token":1,"msg_id":16777241}
+11:35:10.648: CAM-RECV <<< {"rval":0,"msg_id":16777241,"param":"77"}
+11:35:11.267: APP-SEND >>> {"token":1,"msg_id":16777241}
+11:35:11.488: CAM-RECV <<< {"rval":0,"msg_id":16777241,"param":"78"}
+11:35:11.679: APP-SEND >>> {"token":1,"msg_id":16777241}
+11:35:12.388: CAM-RECV <<< {"rval":0,"msg_id":16777241,"param":"79"}
+11:35:12.905: APP-SEND >>> {"token":1,"msg_id":16777241}
+11:35:12.988: CAM-RECV <<< {"rval":0,"msg_id":16777241,"param":"80"}
+11:35:13.425: APP-SEND >>> {"token":1,"msg_id":16777241}
+11:35:13.598: CAM-RECV <<< {"rval":0,"msg_id":16777241,"param":"80"}
+11:35:13.927: APP-SEND >>> {"token":1,"msg_id":16777241}
+11:35:14.520: CAM-RECV <<< {"rval":0,"msg_id":16777241,"param":"81"}
+11:35:14.599: APP-SEND >>> {"token":1,"msg_id":16777241}
+11:35:14.648: CAM-RECV <<< {"rval":0,"msg_id":16777241,"param":"81"}
+11:35:14.754: APP-SEND >>> {"token":1,"msg_id":16777241}
+11:35:15.047: CAM-RECV <<< {"rval":0,"msg_id":16777241,"param":"82"}
+11:35:15.118: APP-SEND >>> {"token":1,"msg_id":16777241}
+11:35:15.368: CAM-RECV <<< {"rval":0,"msg_id":16777241,"param":"82"}
+11:35:15.823: APP-SEND >>> {"token":1,"msg_id":16777241}
+11:35:15.906: CAM-RECV <<< {"rval":0,"msg_id":16777241,"param":"83"}
+11:35:16.201: APP-SEND >>> {"token":1,"msg_id":16777241}
+11:35:17.003: CAM-RECV <<< {"rval":0,"msg_id":16777241,"param":"84"}
+11:35:17.217: APP-SEND >>> {"token":1,"msg_id":16777241}
+11:35:17.533: CAM-RECV <<< {"rval":0,"msg_id":16777241,"param":"84"}
+11:35:17.631: APP-SEND >>> {"token":1,"msg_id":16777241}
+11:35:17.821: CAM-RECV <<< {"rval":0,"msg_id":16777241,"param":"85"}
+11:35:17.948: APP-SEND >>> {"token":1,"msg_id":16777241}
+11:35:18.175: CAM-RECV <<< {"rval":0,"msg_id":16777241,"param":"85"}
+11:35:18.533: APP-SEND >>> {"token":1,"msg_id":16777241}
+11:35:18.839: CAM-RECV <<< {"rval":0,"msg_id":16777241,"param":"86"}
+11:35:19.046: APP-SEND >>> {"token":1,"msg_id":16777241}
+11:35:19.216: CAM-RECV <<< {"rval":0,"msg_id":16777241,"param":"86"}
+11:35:19.436: APP-SEND >>> {"token":1,"msg_id":16777241}
+11:35:19.665: CAM-RECV <<< {"rval":0,"msg_id":16777241,"param":"86"}
+11:35:19.728: APP-SEND >>> {"token":1,"msg_id":16777241}
+11:35:19.827: CAM-RECV <<< {"rval":0,"msg_id":16777241,"param":"87"}
+11:35:19.967: APP-SEND >>> {"token":1,"msg_id":16777241}
+11:35:20.230: CAM-RECV <<< {"rval":0,"msg_id":16777241,"param":"87"}
+11:35:20.495: APP-SEND >>> {"token":1,"msg_id":16777241}
+11:35:21.016: CAM-RECV <<< {"rval":0,"msg_id":16777241,"param":"88"}
+11:35:21.404: APP-SEND >>> {"token":1,"msg_id":16777241}
+11:35:21.706: CAM-RECV <<< {"rval":0,"msg_id":16777241,"param":"88"}
+11:35:22.198: APP-SEND >>> {"token":1,"msg_id":16777241}
+11:35:22.299: CAM-RECV <<< {"rval":0,"msg_id":16777241,"param":"89"}
+11:35:22.499: APP-SEND >>> {"token":1,"msg_id":16777241}
+11:35:22.730: CAM-RECV <<< {"rval":0,"msg_id":16777241,"param":"89"}
+11:35:22.879: APP-SEND >>> {"token":1,"msg_id":16777241}
+11:35:22.886: CAM-RECV <<< { "msg_id": 7, "type": "rec_time" ,"param":"6"}
+11:35:23.095: CAM-RECV <<< {"rval":-14,"msg_id":16777241}
+11:35:23.454: APP-SEND >>> {"token":1,"msg_id":16777241}
+11:35:23.958: CAM-RECV <<< {"rval":-14,"msg_id":16777241}
+11:35:24.373: APP-SEND >>> {"token":1,"msg_id":16777241}
+11:35:24.491: CAM-RECV <<< { "msg_id": 7, "type": "video_record_complete" ,"param":"/tmp/fuse_d/DCIM/100MEDIA/YDTL0044.mp4"}
+11:35:24.697: CAM-RECV <<< { "msg_id": 7, "type": "vf_start" }
+11:35:24.714: CAM-RECV <<< {"rval":-14,"msg_id":16777241}
+11:35:25.097: APP-SEND >>> {"token":1,"msg_id":16777241}
+11:35:43.121: APP-SEND >>> {"token":1,"msg_id":1026,"param":"/tmp/fuse_d/DCIM/100MEDIA/YDTL0044.mp4"}
+11:35:44.031: CAM-RECV <<< {"rval":0,"msg_id":1026,"thumb_file":"YDTL0044.THM","size":18996052,"date":"2015-09-24 11:35:22","resolution":"1920x1080","duration":"5","framerate":29,"media_type":"mov"}
+11:35:59.811: APP-SEND >>> {"token":1,"msg_id":1,"type":"app_status"}
+11:36:00.007: CAM-RECV <<< {"rval":0,"msg_id":1,"type":"app_status","param":"vf"}
+11:36:00.423: APP-SEND >>> {"token":1,"msg_id":13}
+11:36:00.653: CAM-RECV <<< {"rval":0,"msg_id":13,"type":"adapter","param":"34"}
+11:36:16.513: APP-SEND >>> {"token":1,"msg_id":2,"type":"system_mode","param":"capture"}
+11:36:17.518: CAM-RECV <<< { "rval": 0, "msg_id": 2 }
+11:36:17.928: APP-SEND >>> {"token":1,"msg_id":16777228,"param":"burst quality;7 p / s"}
+11:36:18.236: CAM-RECV <<< {"rval":0,"msg_id":16777228}
+11:36:26.183: APP-SEND >>> {"token":1,"msg_id":16777220,"param":"burst quality;7 p / s"}
+11:36:27.747: CAM-RECV <<< {"rval":0,"msg_id":16777220}
+11:36:27.973: CAM-RECV <<< { "msg_id": 7, "type": "start_photo_capture" ,"param":"burst quality;7 p / s"}
+11:36:28.040: CAM-RECV <<< { "msg_id": 7, "type": "vf_stop" }
+11:36:32.847: CAM-RECV <<< { "msg_id": 7, "type": "burst_complete" ,"param":"/tmp/fuse_d/DCIM/100MEDIA/C0010051.jpg"}
+11:36:33.050: CAM-RECV <<< { "msg_id": 7, "type": "vf_start" }
+11:36:40.145: APP-SEND >>> {"token":1,"msg_id":16777229}
+11:36:40.337: CAM-RECV <<< {"rval":0,"msg_id":16777229}
+11:36:40.769: APP-SEND >>> {"token":1,"msg_id":1282,"param":"/tmp/fuse_d/DCIM/ -D -S"}
+11:36:41.351: CAM-RECV <<< {"rval":0,"msg_id":1282,"listing":[{"100MEDIA/":"0 bytes|2015-09-24 10:22:54"}]}
+11:36:41.485: APP-SEND >>> {"token":1,"msg_id":1282,"param":"/tmp/fuse_d/DCIM/100MEDIA/ -D -S"}
+11:36:42.017: CAM-RECV <<< {"rval":0,"msg_id":1282,"listing":[{"YDXJ0042.jpg":"3832451 bytes|2015-09-24 10:22:56"},{"YDXJ0043.mp4":"138953622 bytes|2015-09-24 10:24:42"},{"YDXJ0043_thm.mp4":"2144090 bytes|2015-09-24 10:24:42"},{"YDXJ0043.THM":"37567 bytes|2015-09-24 10:24:10"},{"YDTL0044.mp4":"18996052 bytes|2015-09-24 11:35:22"},{"YDTL0044_thm.mp4":"371028 bytes|2015-09-24 11:35:22"},{"YDTL0044.THM":"40226 bytes|2015-09-24 11:33:52"},{"C0010045.jpg":"2773622 bytes|2015-09-24 11:36:26"},{"C0010046.jpg":"2776523 bytes|2015-09-24 11:36:28"},{"C0010047.jpg":"2771936 bytes|2015-09-24 11:36:28"},{"C0010048.jpg":"2773302 bytes|2015-09-24 11:36:28"},{"C0010049.jpg":"2772390 bytes|2015-09-24 11:36:28"},{"C0010050.jpg":"2772432 bytes|2015-09-24 11:36:28"},{"C0010051.jpg":"2771243 bytes|2015-09-24 11:36:30"}]}
+11:36:58.694: APP-SEND >>> {"token":1,"msg_id":16777230}
+11:36:58.902: CAM-RECV <<< {"rval":0,"msg_id":16777230}
+11:36:59.295: APP-SEND >>> {"token":1,"msg_id":1,"type":"app_status"}
+11:36:59.493: CAM-RECV <<< {"rval":0,"msg_id":1,"type":"app_status","param":"idle"}
+11:36:59.809: APP-SEND >>> {"token":1,"msg_id":13}
+11:37:00.334: CAM-RECV <<< {"rval":0,"msg_id":13,"type":"adapter","param":"35"}
+11:37:00.728: APP-SEND >>> {"token":1,"msg_id":259,"param":"none_force"}
+11:37:00.758: CAM-RECV <<< { "msg_id": 7, "type": "vf_start" }
+11:37:01.106: CAM-RECV <<< {"rval":0,"msg_id":259}
+11:37:07.484: APP-SEND >>> {"token":1,"msg_id":2,"type":"system_mode","param":"capture"}
+11:37:08.335: CAM-RECV <<< { "rval": 0, "msg_id": 2 }
+11:37:08.507: APP-SEND >>> {"token":1,"msg_id":16777228,"param":"precise self quality;5s"}
+11:37:08.919: CAM-RECV <<< {"rval":0,"msg_id":16777228}
+11:37:16.296: APP-SEND >>> {"token":1,"msg_id":16777228,"param":"precise self quality;10s"}
+11:37:17.520: CAM-RECV <<< {"rval":0,"msg_id":16777228}
+11:37:20.699: APP-SEND >>> {"token":1,"msg_id":16777228,"param":"precise self quality;3s"}
+11:37:22.018: CAM-RECV <<< {"rval":0,"msg_id":16777228}
+11:37:26.638: APP-SEND >>> {"token":1,"msg_id":16777220,"param":"precise self quality;3s"}
+11:37:27.652: CAM-RECV <<< { "msg_id": 7, "type": "start_photo_capture" ,"param":"precise quality;3s"}
+11:37:27.864: CAM-RECV <<< {"rval":0,"msg_id":16777220}
+11:37:31.234: CAM-RECV <<< { "msg_id": 7, "type": "vf_stop" }
+11:37:31.677: CAM-RECV <<< { "msg_id": 7, "type": "precise_capture_data_ready" }
+11:37:38.482: CAM-RECV <<< { "msg_id": 7, "type": "photo_taken" ,"param":"/tmp/fuse_d/DCIM/100MEDIA/YDXJ0052.jpg"}
+11:37:38.623: CAM-RECV <<< { "msg_id": 7, "type": "vf_start" }
+11:37:52.443: APP-SEND >>> {"token":1,"msg_id":2,"type":"system_mode","param":"capture"}
+11:37:53.556: CAM-RECV <<< { "rval": 0, "msg_id": 2 }
+11:37:54.015: APP-SEND >>> {"token":1,"msg_id":16777228,"param":"precise quality cont.;0.5 sec"}
+11:37:54.378: CAM-RECV <<< {"rval":0,"msg_id":16777228}
+11:38:03.203: APP-SEND >>> {"token":1,"msg_id":16777228,"param":"precise quality cont.;10.0 sec"}
+11:38:04.513: CAM-RECV <<< {"rval":0,"msg_id":16777228}
+11:38:07.624: APP-SEND >>> {"token":1,"msg_id":16777228,"param":"precise quality cont.;1.0 sec"}
+11:38:08.719: CAM-RECV <<< {"rval":0,"msg_id":16777228}
+11:38:10.563: APP-SEND >>> {"token":1,"msg_id":16777220,"param":"precise quality cont.;1.0 sec"}
+11:38:11.785: CAM-RECV <<< {"rval":0,"msg_id":16777220}
+11:38:12.382: CAM-RECV <<< { "msg_id": 7, "type": "start_photo_capture" ,"param":"precise quality cont.;1.0 sec"}
+11:38:12.414: CAM-RECV <<< { "msg_id": 7, "type": "vf_stop" }
+11:38:47.621: APP-SEND >>> {"token":1,"msg_id":770}
+11:38:47.880: CAM-RECV <<< {"rval":0,"msg_id":770}
+11:38:50.262: CAM-RECV <<< { "msg_id": 7, "type": "precise_cont_complete" ,"param":"/tmp/fuse_d/DCIM/100MEDIA/Y0020088.jpg"}
+11:38:50.592: CAM-RECV <<< { "msg_id": 7, "type": "vf_start" }
+11:39:21.571: APP-SEND >>> {"token":1,"msg_id":258}
+11:39:21.670: CAM-RECV <<< {"rval":0,"msg_id":258}
